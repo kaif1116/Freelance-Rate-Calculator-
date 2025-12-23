@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
             /* Light theme colors */
@@ -64,6 +65,9 @@
             background-color: var(--bg-primary);
             transition: var(--transition);
             overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
         
         h1, h2, h3, h4 {
@@ -103,11 +107,30 @@
             color: var(--primary-dark);
         }
         
+        /* ===== RESPONSIVE CONTAINER ===== */
         .container {
             width: 100%;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 clamp(1rem, 0.5rem + 2vw, 1.5rem);
+            padding: 0 clamp(1rem, 5vw, 2rem);
+        }
+        
+        @media (min-width: 1440px) {
+            .container {
+                max-width: 1200px;
+            }
+        }
+        
+        @media (max-width: 1024px) {
+            .container {
+                padding: 0 1.5rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 1rem;
+            }
         }
         
         .btn {
@@ -160,9 +183,32 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1rem clamp(1rem, 0.5rem + 2vw, 1.5rem);
+            padding: 1rem 0;
+            width: 100%;
             max-width: 1200px;
             margin: 0 auto;
+            padding-left: clamp(1rem, 5vw, 2rem);
+            padding-right: clamp(1rem, 5vw, 2rem);
+        }
+        
+        @media (min-width: 1440px) {
+            .nav-container {
+                max-width: 1200px;
+            }
+        }
+        
+        @media (max-width: 1024px) {
+            .nav-container {
+                padding-left: 1.5rem;
+                padding-right: 1.5rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-container {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
         }
         
         .logo {
@@ -181,8 +227,20 @@
         
         .nav-links {
             display: flex;
-            gap: clamp(1.5rem, 1rem + 2vw, 2rem);
+            gap: clamp(1.5rem, 2vw, 2.5rem);
             align-items: center;
+        }
+        
+        @media (max-width: 1024px) {
+            .nav-links {
+                gap: 1.5rem;
+            }
+        }
+        
+        @media (max-width: 900px) {
+            .nav-links {
+                display: none;
+            }
         }
         
         .nav-links a {
@@ -244,6 +302,14 @@
             height: 40px;
             border-radius: var(--radius);
             transition: var(--transition);
+        }
+        
+        @media (max-width: 900px) {
+            .mobile-menu-btn {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
         }
         
         .mobile-menu-overlay {
@@ -336,9 +402,13 @@
         }
         
         /* ===== MAIN CONTENT SECTIONS ===== */
+        main {
+            flex: 1;
+        }
+        
         .page-section {
             min-height: 100vh;
-            padding: clamp(3rem, 2.5rem + 2vw, 5rem) 0;
+            padding: clamp(3rem, 5vw, 5rem) 0;
             display: none;
         }
         
@@ -358,7 +428,7 @@
         
         /* ===== HERO SECTION ===== */
         .hero {
-            padding: clamp(3rem, 2.5rem + 2vw, 4rem) 0;
+            padding: clamp(3rem, 5vw, 4rem) 0;
             background-color: var(--bg-secondary);
             text-align: center;
             position: relative;
@@ -376,8 +446,15 @@
         }
         
         .hero-content {
-            max-width: 600px;
+            max-width: 700px;
             margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        @media (min-width: 768px) {
+            .hero-content {
+                padding: 0;
+            }
         }
         
         .hero h1 {
@@ -422,7 +499,7 @@
         
         /* ===== COMPACT CALCULATOR SECTION ===== */
         .calculator-section {
-            padding: clamp(3rem, 2.5rem + 2vw, 4rem) 0;
+            padding: clamp(3rem, 5vw, 4rem) 0;
             background-color: var(--bg-primary);
         }
         
@@ -430,14 +507,20 @@
             background-color: var(--bg-card);
             border-radius: var(--radius-lg);
             box-shadow: var(--shadow-lg);
-            padding: clamp(1.5rem, 1.25rem + 1.25vw, 2rem);
-            max-width: 800px;
+            padding: clamp(1.5rem, 3vw, 2.5rem);
+            max-width: 900px;
             margin: 0 auto;
             border: 1px solid var(--border-color);
         }
         
+        @media (min-width: 1024px) {
+            .calculator-card {
+                padding: 2rem;
+            }
+        }
+        
         .calculator-header {
-            margin-bottom: clamp(1.5rem, 1.25rem + 1.25vw, 2rem);
+            margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
             text-align: center;
         }
         
@@ -528,13 +611,20 @@
         .calculator-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: clamp(1rem, 0.75rem + 1.25vw, 1.5rem);
-            margin-bottom: clamp(1.5rem, 1.25rem + 1.25vw, 2rem);
+            gap: clamp(1rem, 2vw, 2rem);
+            margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
         }
         
-        @media (max-width: 640px) {
+        @media (max-width: 768px) {
             .calculator-grid {
                 grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .calculator-grid {
+                gap: 1.5rem;
             }
         }
         
@@ -586,8 +676,8 @@
         .results-section {
             background-color: var(--bg-card);
             border-radius: var(--radius-lg);
-            padding: clamp(1.5rem, 1.25rem + 1.25vw, 2rem);
-            margin-top: clamp(1.5rem, 1.25rem + 1.25vw, 2rem);
+            padding: clamp(1.5rem, 3vw, 2.5rem);
+            margin-top: clamp(1.5rem, 3vw, 2.5rem);
             border: 1px solid var(--border-color);
             display: none;
         }
@@ -616,21 +706,27 @@
         .results-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: clamp(0.75rem, 0.5rem + 1.25vw, 1rem);
+            gap: clamp(0.75rem, 1.5vw, 1.5rem);
             margin-bottom: 1.5rem;
         }
         
-        @media (max-width: 640px) {
+        @media (max-width: 768px) {
             .results-grid {
                 grid-template-columns: 1fr;
-                gap: 0.75rem;
+                gap: 1rem;
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .results-grid {
+                gap: 1rem;
             }
         }
         
         .rate-card {
             background-color: var(--bg-primary);
             border-radius: var(--radius);
-            padding: clamp(1rem, 0.75rem + 1.25vw, 1.25rem);
+            padding: clamp(1rem, 2vw, 1.5rem);
             text-align: center;
             border: 1px solid var(--border-color);
             transition: var(--transition);
@@ -650,7 +746,7 @@
         }
         
         .rate-value {
-            font-size: clamp(1.5rem, 1.25rem + 1.25vw, 1.75rem);
+            font-size: clamp(1.5rem, 2vw, 2rem);
             font-weight: 700;
             color: var(--primary-color);
             margin-bottom: 0.25rem;
@@ -663,1161 +759,963 @@
         }
         
         .results-explanation {
-            background-color: var(--bg-secondary);
-            border-radius: var(--radius);
-            padding: 1rem;
             margin-top: 1.5rem;
-            border-left: 3px solid var(--accent-color);
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border-color);
         }
         
-        .results-explanation h4 {
+        .results-explanation h3 {
             margin-bottom: 0.5rem;
-            font-size: clamp(0.875rem, 0.85rem + 0.13vw, 0.9375rem);
         }
         
-        /* ===== COMPACT FAQ SECTION ===== */
-        .faq-section {
-            padding: clamp(3rem, 2.5rem + 2vw, 4rem) 0;
-            background-color: var(--bg-secondary);
-        }
-        
-        .faq-container {
+        /* ===== OTHER PAGES ===== */
+        .page-content {
             max-width: 800px;
             margin: 0 auto;
+            padding: 0 1rem;
         }
         
-        .faq-item {
-            background-color: var(--bg-card);
-            border-radius: var(--radius);
-            margin-bottom: 0.75rem;
-            overflow: hidden;
-            border: 1px solid var(--border-color);
-            transition: var(--transition);
+        @media (min-width: 768px) {
+            .page-content {
+                padding: 0;
+            }
         }
         
-        .faq-item:hover {
-            border-color: var(--primary-color);
-        }
-        
-        .faq-question {
-            padding: 1rem 1.25rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            cursor: pointer;
-            font-weight: 500;
-            color: var(--text-primary);
-            transition: var(--transition);
-        }
-        
-        .faq-question:hover {
-            background-color: var(--bg-secondary);
-        }
-        
-        .faq-question i {
-            transition: var(--transition);
-            color: var(--text-secondary);
-            font-size: 0.875rem;
-        }
-        
-        .faq-item.active .faq-question i {
-            transform: rotate(180deg);
-            color: var(--primary-color);
-        }
-        
-        .faq-answer {
-            padding: 0 1.25rem;
-            max-height: 0;
-            overflow: hidden;
-            transition: var(--transition);
-            color: var(--text-secondary);
-        }
-        
-        .faq-item.active .faq-answer {
-            padding: 0 1.25rem 1rem;
-            max-height: 300px;
-        }
-        
-        /* ===== CONTENT PAGES STYLES ===== */
-        .content-card {
-            background-color: var(--bg-card);
-            border-radius: var(--radius-lg);
-            box-shadow: var(--shadow-lg);
-            padding: clamp(2rem, 1.5rem + 2.5vw, 3rem);
-            max-width: 900px;
-            margin: 0 auto;
-            border: 1px solid var(--border-color);
-        }
-        
-        .content-header {
+        .page-content h1 {
+            margin-bottom: 1.5rem;
             text-align: center;
-            margin-bottom: 2rem;
-            padding-bottom: 1.5rem;
-            border-bottom: 1px solid var(--border-color);
         }
         
-        .content-header h1 {
-            margin-bottom: 0.5rem;
-        }
-        
-        .content-header p {
-            color: var(--text-secondary);
-            font-size: clamp(0.875rem, 0.85rem + 0.13vw, 0.9375rem);
-        }
-        
-        .content-body {
-            line-height: 1.7;
-        }
-        
-        .content-body h2 {
+        .page-content h2 {
             margin-top: 2rem;
             margin-bottom: 1rem;
-            color: var(--primary-color);
         }
         
-        .content-body h3 {
-            margin-top: 1.5rem;
-            margin-bottom: 0.75rem;
-            color: var(--text-primary);
-        }
-        
-        .content-body p {
-            margin-bottom: 1.25rem;
-        }
-        
-        .content-body ul, .content-body ol {
-            padding-left: 1.5rem;
+        .page-content ul, .page-content ol {
+            margin-left: 1.5rem;
             margin-bottom: 1.5rem;
             color: var(--text-secondary);
         }
         
-        .content-body li {
+        .page-content li {
             margin-bottom: 0.5rem;
-            line-height: 1.6;
         }
         
-        .content-body strong {
-            color: var(--text-primary);
-        }
-        
-        /* ===== ADSENSE PLACEHOLDERS ===== */
-        .adsense-container {
-            margin: clamp(1.5rem, 1.25rem + 1.25vw, 2rem) auto;
+        /* ===== ADS PLACEHOLDERS ===== */
+        .ad-container {
+            margin: 2rem auto;
             text-align: center;
-            max-width: 728px;
-        }
-        
-        .adsense-placeholder {
             background-color: var(--bg-secondary);
-            border: 2px dashed var(--border-color);
             border-radius: var(--radius);
-            padding: clamp(1.5rem, 1.25rem + 1.25vw, 2rem);
+            padding: 2rem;
+            border: 1px dashed var(--border-color);
             color: var(--text-secondary);
-            transition: var(--transition);
+            font-size: 0.875rem;
+            max-width: 100%;
         }
         
-        .adsense-placeholder:hover {
-            border-color: var(--primary-color);
-        }
-        
-        .adsense-placeholder h4 {
-            margin-bottom: 0.5rem;
-            color: var(--text-primary);
-        }
-        
-        /* ===== COMPACT FOOTER ===== */
+        /* ===== FOOTER ===== */
         footer {
-            background-color: var(--secondary-color);
-            color: #f1f5f9;
-            padding: clamp(2rem, 1.5rem + 2.5vw, 3rem) 0 1.5rem;
+            background-color: var(--bg-secondary);
+            padding: clamp(2rem, 4vw, 3rem) 0;
+            border-top: 1px solid var(--border-color);
+            margin-top: auto;
+        }
+        
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 clamp(1rem, 5vw, 2rem);
         }
         
         .footer-content {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: clamp(1.5rem, 1rem + 2.5vw, 2.5rem);
-            margin-bottom: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 2rem;
         }
         
-        @media (max-width: 768px) {
+        @media (min-width: 768px) {
             .footer-content {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: flex-start;
+                text-align: left;
             }
         }
         
         .footer-logo {
             font-family: 'Poppins', sans-serif;
-            font-size: clamp(1.25rem, 1.2rem + 0.25vw, 1.375rem);
+            font-size: 1.5rem;
             font-weight: 700;
-            color: white;
-            margin-bottom: 0.75rem;
-        }
-        
-        .footer-description {
-            color: #cbd5e1;
+            color: var(--primary-color);
             margin-bottom: 1rem;
-            font-size: clamp(0.875rem, 0.85rem + 0.13vw, 0.9375rem);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
         
-        .footer-links h4 {
-            margin-bottom: 0.75rem;
-            color: white;
-            font-size: clamp(0.875rem, 0.85rem + 0.13vw, 0.9375rem);
-        }
-        
-        .footer-links ul {
-            list-style-type: none;
-            padding: 0;
-        }
-        
-        .footer-links li {
-            margin-bottom: 0.5rem;
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            min-width: 150px;
         }
         
         .footer-links a {
-            color: #cbd5e1;
-            font-size: clamp(0.875rem, 0.85rem + 0.13vw, 0.9375rem);
+            color: var(--text-secondary);
             transition: var(--transition);
         }
         
         .footer-links a:hover {
-            color: white;
-            padding-left: 0.25rem;
+            color: var(--primary-color);
         }
         
-        .copyright {
+        .footer-bottom {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-color);
             text-align: center;
-            padding-top: 1.5rem;
-            border-top: 1px solid #334155;
-            color: #94a3b8;
-            font-size: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+            color: var(--text-secondary);
+            font-size: 0.875rem;
         }
         
-        /* ===== RESPONSIVE ADJUSTMENTS ===== */
+        /* ===== RESPONSIVE UTILITIES ===== */
+        @media (max-width: 1200px) {
+            .container, .nav-container, .footer-container {
+                padding-left: 2rem;
+                padding-right: 2rem;
+            }
+        }
+        
+        @media (max-width: 1024px) {
+            .container, .nav-container, .footer-container {
+                padding-left: 1.5rem;
+                padding-right: 1.5rem;
+            }
+            
+            .calculator-card {
+                max-width: 90%;
+            }
+        }
+        
         @media (max-width: 768px) {
-            .mobile-menu-btn {
-                display: block;
+            .container, .nav-container, .footer-container {
+                padding-left: 1rem;
+                padding-right: 1rem;
             }
             
-            .nav-links {
-                display: none;
-            }
-            
-            .hero-cta {
+            .footer-content {
                 flex-direction: column;
+                text-align: center;
+                gap: 2rem;
+            }
+            
+            .footer-links {
                 align-items: center;
             }
-            
-            .hero-cta .btn {
-                width: 100%;
-                max-width: 300px;
-            }
-            
-            .trust-badges {
-                flex-direction: column;
-                align-items: center;
-                gap: 1rem;
+        }
+        
+        @media (min-width: 1440px) {
+            .container, .nav-container, .footer-container {
+                max-width: 1200px;
+                margin-left: auto;
+                margin-right: auto;
+                padding-left: 0;
+                padding-right: 0;
             }
         }
         
-        @media (max-width: 640px) {
-            .currency-selector {
-                max-width: 100%;
+        /* Tablet landscape optimization */
+        @media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+            .calculator-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
             
-            .page-section {
-                padding: clamp(2rem, 1.5rem + 2.5vw, 3rem) 0;
+            .results-grid {
+                grid-template-columns: repeat(3, 1fr);
             }
         }
         
-        /* Print and accessibility */
-        @media print {
-            .no-print {
-                display: none;
+        /* Large desktop screens */
+        @media (min-width: 1600px) {
+            .container, .nav-container, .footer-container {
+                max-width: 1400px;
             }
         }
         
-        /* Focus styles for accessibility */
-        :focus-visible {
-            outline: 2px solid var(--primary-color);
-            outline-offset: 2px;
+        /* Prevent content from stretching too wide */
+        .page-section > .container {
+            max-width: 1200px;
+        }
+        
+        /* Center align content on large screens */
+        @media (min-width: 1440px) {
+            .hero-content, .page-content, .calculator-card {
+                margin-left: auto;
+                margin-right: auto;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- ===== HEADER & PREMIUM MOBILE MENU ===== -->
+    <!-- Header -->
     <header>
         <div class="nav-container">
-            <a href="#home" class="logo" data-page="home">
-                <span class="logo-icon">💰</span>
+            <a href="#home" class="logo" onclick="showPage('home')">
+                <i class="fas fa-calculator logo-icon"></i>
                 RateCalc Pro
             </a>
             
-            <div class="nav-links">
-                <a href="#home" data-page="home">Home</a>
-                <a href="#about" data-page="about">About Us</a>
-                <a href="#privacy" data-page="privacy">Privacy Policy</a>
-                <a href="#terms" data-page="terms">Terms & Conditions</a>
-                <a href="#disclaimer" data-page="disclaimer">Disclaimer</a>
-            </div>
+            <nav class="nav-links">
+                <a href="#home" onclick="showPage('home')">Home</a>
+                <a href="#calculator" onclick="showPage('calculator')">Calculator</a>
+                <a href="#about" onclick="showPage('about')">About</a>
+                <a href="#privacy" onclick="showPage('privacy')">Privacy Policy</a>
+                <a href="#terms" onclick="showPage('terms')">Terms</a>
+                <a href="#disclaimer" onclick="showPage('disclaimer')">Disclaimer</a>
+            </nav>
             
             <div class="nav-actions">
-                <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
-                    <i id="themeIcon">🌙</i>
+                <button class="theme-toggle" id="themeToggle">
+                    <i class="fas fa-moon"></i>
                 </button>
-                <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open menu">
-                    <i>☰</i>
-                </button>
-            </div>
-        </div>
-        
-        <!-- Premium Mobile Menu -->
-        <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
-        <div class="mobile-menu" id="mobileMenu">
-            <div class="mobile-menu-header">
-                <div class="logo">
-                    <span class="logo-icon">💰</span>
-                    RateCalc Pro
-                </div>
-                <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Close menu">
-                    <i>✕</i>
-                </button>
-            </div>
-            <div class="mobile-menu-links">
-                <a href="#home" data-page="home">Home</a>
-                <a href="#about" data-page="about">About Us</a>
-                <a href="#privacy" data-page="privacy">Privacy Policy</a>
-                <a href="#terms" data-page="terms">Terms & Conditions</a>
-                <a href="#disclaimer" data-page="disclaimer">Disclaimer</a>
-            </div>
-            <div class="mobile-menu-footer">
-                <button class="theme-toggle" id="mobileThemeToggle" aria-label="Toggle dark mode">
-                    <i>🌙</i> Dark Mode
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
                 </button>
             </div>
         </div>
     </header>
 
-    <!-- ===== HOME PAGE ===== -->
-    <section id="home" class="page-section active">
-        <div class="hero">
-            <div class="container">
-                <div class="hero-content">
-                    <h1>Professional Freelance Rate Calculator</h1>
-                    <p>Calculate optimal freelance rates for USA, UK, India, Pakistan, Canada, Australia. Get accurate hourly, daily, and monthly rates based on your income goals.</p>
-                    
-                    <div class="hero-cta">
-                        <a href="#calculator" class="btn">
-                            <i>🚀</i> Calculate Your Rate
-                        </a>
-                        <a href="#about" class="btn btn-outline" data-page="about">
-                            <i>❓</i> Learn More
-                        </a>
-                    </div>
-                    
-                    <div class="trust-badges">
-                        <div class="trust-badge">
-                            <i>✓</i> <span>10,000+ Freelancers Trust Us</span>
+    <!-- Mobile Menu -->
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-header">
+            <span class="logo">
+                <i class="fas fa-calculator logo-icon"></i>
+                RateCalc Pro
+            </span>
+            <button class="mobile-menu-close" id="mobileMenuClose">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="mobile-menu-links">
+            <a href="#home" onclick="showPage('home'); closeMobileMenu()">Home</a>
+            <a href="#calculator" onclick="showPage('calculator'); closeMobileMenu()">Calculator</a>
+            <a href="#about" onclick="showPage('about'); closeMobileMenu()">About</a>
+            <a href="#privacy" onclick="showPage('privacy'); closeMobileMenu()">Privacy Policy</a>
+            <a href="#terms" onclick="showPage('terms'); closeMobileMenu()">Terms & Conditions</a>
+            <a href="#disclaimer" onclick="showPage('disclaimer'); closeMobileMenu()">Disclaimer</a>
+        </div>
+        <div class="mobile-menu-footer">
+            <p style="font-size: 0.75rem; color: var(--text-secondary);">
+                &copy; 2023 RateCalc Pro. All rights reserved.
+            </p>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Home Section -->
+        <section id="home" class="page-section active">
+            <div class="hero">
+                <div class="container">
+                    <div class="hero-content">
+                        <h1>Professional Freelance Rate Calculator</h1>
+                        <p>Calculate optimal freelance rates for USA, UK, India, Pakistan, Canada, Australia with real-time currency conversion and financial insights.</p>
+                        <div class="hero-cta">
+                            <a href="#calculator" class="btn" onclick="showPage('calculator')">
+                                <i class="fas fa-calculator"></i>
+                                Start Calculating
+                            </a>
+                            <a href="#about" class="btn btn-outline" onclick="showPage('about')">
+                                <i class="fas fa-info-circle"></i>
+                                Learn More
+                            </a>
                         </div>
-                        <div class="trust-badge">
-                            <i>✓</i> <span>100% Free & Private</span>
-                        </div>
-                        <div class="trust-badge">
-                            <i>✓</i> <span>7 Global Currencies</span>
+                        <div class="trust-badges">
+                            <div class="trust-badge">
+                                <i class="fas fa-globe"></i>
+                                <span>Global Rates</span>
+                            </div>
+                            <div class="trust-badge">
+                                <i class="fas fa-shield-alt"></i>
+                                <span>Accurate Calculations</span>
+                            </div>
+                            <div class="trust-badge">
+                                <i class="fas fa-sync-alt"></i>
+                                <span>Real-time Conversion</span>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-
-        <!-- ===== GOOGLE ADSENSE PLACEHOLDER ===== -->
-        <div class="container no-print">
-            <div class="adsense-container">
-                <div class="adsense-placeholder">
-                    <h4>Advertisement</h4>
-                    <p>Google AdSense Banner (728x90)</p>
-                    <p>Premium advertising space optimized for business and finance content.</p>
+            
+            <div class="container">
+                <!-- Ad Placeholder 1 -->
+                <div class="ad-container">
+                    <p>Advertisement</p>
+                    <p>Ad space (728x90)</p>
+                </div>
+                
+                <div class="page-content">
+                    <h2>Why Use RateCalc Pro?</h2>
+                    <p>Determining the right freelance rate can be challenging. Charge too little and you undervalue your work; charge too much and you might lose clients. RateCalc Pro helps you find the perfect balance by considering all essential factors:</p>
+                    
+                    <ul>
+                        <li><strong>Local Market Rates:</strong> Get region-specific pricing for USA, UK, India, Pakistan, Canada, and Australia</li>
+                        <li><strong>Expense Coverage:</strong> Account for business expenses, taxes, and insurance</li>
+                        <li><strong>Profit Margin:</strong> Ensure you're earning a sustainable profit</li>
+                        <li><strong>Currency Conversion:</strong> Real-time exchange rates for international clients</li>
+                        <li><strong>Multiple Pricing Models:</strong> Calculate hourly, daily, weekly, and monthly rates</li>
+                    </ul>
+                    
+                    <p>Whether you're a beginner freelancer or an experienced professional, RateCalc Pro provides the insights you need to price your services competitively and profitably.</p>
+                    
+                    <div style="text-align: center; margin: 3rem 0;">
+                        <a href="#calculator" class="btn" onclick="showPage('calculator')" style="padding: 1rem 2rem; font-size: 1.1rem;">
+                            <i class="fas fa-rocket"></i>
+                            Launch Calculator Now
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Ad Placeholder 2 -->
+                <div class="ad-container">
+                    <p>Advertisement</p>
+                    <p>Ad space (300x250)</p>
                 </div>
             </div>
-        </div>
+        </section>
 
-        <!-- ===== CALCULATOR SECTION ===== -->
-        <section class="calculator-section" id="calculator">
-            <div class="container">
-                <div class="calculator-card">
-                    <div class="calculator-header">
-                        <h2>Freelance Rate Calculator</h2>
-                        <p>Enter your financial goals and working preferences to calculate your ideal freelance rates.</p>
-                    </div>
-                    
-                    <!-- Premium Currency Selector -->
-                    <div class="currency-selector">
-                        <button class="currency-dropdown-btn" id="currencyDropdownBtn" aria-label="Select currency">
-                            <span id="selectedCurrency">USD ($)</span>
-                            <i>▼</i>
-                        </button>
-                        <div class="currency-dropdown" id="currencyDropdown">
-                            <div class="currency-option active" data-currency="USD">USD ($)</div>
-                            <div class="currency-option" data-currency="GBP">GBP (£)</div>
-                            <div class="currency-option" data-currency="EUR">EUR (€)</div>
-                            <div class="currency-option" data-currency="CAD">CAD ($)</div>
-                            <div class="currency-option" data-currency="AUD">AUD ($)</div>
-                            <div class="currency-option" data-currency="INR">INR (₹)</div>
-                            <div class="currency-option" data-currency="PKR">PKR (₨)</div>
-                        </div>
-                    </div>
-                    
-                    <!-- Calculator Inputs -->
-                    <div class="calculator-grid">
-                        <div class="input-group">
-                            <label for="incomeGoal">
-                                Monthly Income Goal
-                            </label>
-                            <input type="number" id="incomeGoal" placeholder="e.g., 5000" min="0" step="100" value="5000">
-                            <span class="input-hint">Desired monthly take-home pay</span>
+        <!-- Calculator Section -->
+        <section id="calculator" class="page-section">
+            <div class="calculator-section">
+                <div class="container">
+                    <div class="calculator-card">
+                        <div class="calculator-header">
+                            <h2>Freelance Rate Calculator</h2>
+                            <p>Enter your details to calculate optimal freelance rates for your region</p>
+                            
+                            <!-- Currency Selector -->
+                            <div class="currency-selector">
+                                <button class="currency-dropdown-btn" id="currencyDropdownBtn">
+                                    <span id="selectedCurrency">USD ($)</span>
+                                    <i class="fas fa-chevron-down"></i>
+                                </button>
+                                <div class="currency-dropdown" id="currencyDropdown">
+                                    <div class="currency-option active" data-currency="USD">USD ($) - United States</div>
+                                    <div class="currency-option" data-currency="GBP">GBP (£) - United Kingdom</div>
+                                    <div class="currency-option" data-currency="EUR">EUR (€) - Europe</div>
+                                    <div class="currency-option" data-currency="CAD">CAD ($) - Canada</div>
+                                    <div class="currency-option" data-currency="AUD">AUD ($) - Australia</div>
+                                    <div class="currency-option" data-currency="INR">INR (₹) - India</div>
+                                    <div class="currency-option" data-currency="PKR">PKR (₨) - Pakistan</div>
+                                </div>
+                            </div>
                         </div>
                         
-                        <div class="input-group">
-                            <label for="weeklyHours">
-                                Weekly Working Hours
-                            </label>
-                            <input type="number" id="weeklyHours" placeholder="e.g., 40" min="0" max="168" step="1" value="40">
-                            <span class="input-hint">Hours you plan to work each week</span>
-                        </div>
-                        
-                        <div class="input-group">
-                            <label for="weeksPerYear">
-                                Weeks Worked Per Year
-                            </label>
-                            <input type="number" id="weeksPerYear" placeholder="e.g., 48" min="0" max="52" step="1" value="48">
-                            <span class="input-hint">Account for holidays and vacations</span>
-                        </div>
-                        
-                        <div class="input-group">
-                            <label for="expenses">
-                                Monthly Expenses (Optional)
-                            </label>
-                            <input type="number" id="expenses" placeholder="e.g., 1000" min="0" step="100" value="1000">
-                            <span class="input-hint">Business costs, taxes, software, etc.</span>
-                        </div>
-                    </div>
-                    
-                    <button class="btn calculate-btn" id="calculateBtn">
-                        <i>🧮</i> Calculate My Rates
-                    </button>
-                    
-                    <!-- Results Section -->
-                    <div class="results-section" id="resultsSection">
-                        <div class="results-header">
-                            <h3>Your Recommended Freelance Rates</h3>
-                            <p>Based on your inputs, here are your suggested rates:</p>
-                        </div>
-                        
-                        <div class="results-grid">
-                            <div class="rate-card">
-                                <h3>Hourly Rate</h3>
-                                <div class="rate-value" id="hourlyRate">$0.00</div>
-                                <div class="rate-period">per hour</div>
+                        <!-- Calculator Form -->
+                        <form id="rateCalculator">
+                            <div class="calculator-grid">
+                                <div class="input-group">
+                                    <label for="desiredIncome">Desired Annual Income</label>
+                                    <input type="number" id="desiredIncome" placeholder="e.g., 60000" min="1000" step="1000" required>
+                                    <span class="input-hint">The annual salary you want to earn</span>
+                                </div>
+                                
+                                <div class="input-group">
+                                    <label for="businessExpenses">Annual Business Expenses</label>
+                                    <input type="number" id="businessExpenses" placeholder="e.g., 10000" min="0" step="100" required>
+                                    <span class="input-hint">Software, equipment, insurance, etc.</span>
+                                </div>
+                                
+                                <div class="input-group">
+                                    <label for="workHours">Weekly Work Hours</label>
+                                    <input type="number" id="workHours" placeholder="e.g., 40" min="10" max="80" step="5" required>
+                                    <span class="input-hint">Hours you plan to work per week</span>
+                                </div>
+                                
+                                <div class="input-group">
+                                    <label for="vacationWeeks">Vacation Weeks Per Year</label>
+                                    <input type="number" id="vacationWeeks" placeholder="e.g., 4" min="0" max="12" step="1" required>
+                                    <span class="input-hint">Paid vacation and sick days</span>
+                                </div>
+                                
+                                <div class="input-group">
+                                    <label for="billablePercentage">Billable Time Percentage</label>
+                                    <input type="number" id="billablePercentage" placeholder="e.g., 70" min="10" max="100" step="5" required>
+                                    <span class="input-hint">% of time spent on paid work (vs. admin)</span>
+                                </div>
+                                
+                                <div class="input-group">
+                                    <label for="profitMargin">Profit Margin (%)</label>
+                                    <input type="number" id="profitMargin" placeholder="e.g., 20" min="0" max="100" step="5" required>
+                                    <span class="input-hint">Additional margin for growth & savings</span>
+                                </div>
                             </div>
                             
-                            <div class="rate-card">
-                                <h3>Daily Rate</h3>
-                                <div class="rate-value" id="dailyRate">$0.00</div>
-                                <div class="rate-period">per day (8 hours)</div>
+                            <button type="submit" class="btn calculate-btn">
+                                <i class="fas fa-calculator"></i>
+                                Calculate My Rates
+                            </button>
+                        </form>
+                        
+                        <!-- Results Section -->
+                        <div class="results-section" id="resultsSection">
+                            <div class="results-header">
+                                <h2>Your Recommended Freelance Rates</h2>
+                                <p>Based on your inputs and current market rates</p>
                             </div>
                             
-                            <div class="rate-card">
-                                <h3>Monthly Rate</h3>
-                                <div class="rate-value" id="monthlyRate">$0.00</div>
-                                <div class="rate-period">per month</div>
+                            <div class="results-grid">
+                                <div class="rate-card">
+                                    <h3>Hourly Rate</h3>
+                                    <div class="rate-value" id="hourlyRate">$0.00</div>
+                                    <div class="rate-period">Per hour</div>
+                                </div>
+                                
+                                <div class="rate-card">
+                                    <h3>Daily Rate</h3>
+                                    <div class="rate-value" id="dailyRate">$0.00</div>
+                                    <div class="rate-period">Per day (8 hours)</div>
+                                </div>
+                                
+                                <div class="rate-card">
+                                    <h3>Weekly Rate</h3>
+                                    <div class="rate-value" id="weeklyRate">$0.00</div>
+                                    <div class="rate-period">Per week</div>
+                                </div>
+                            </div>
+                            
+                            <div class="results-explanation">
+                                <h3>How These Rates Are Calculated</h3>
+                                <p>Your rates account for your desired income, business expenses, non-billable time, vacation, and profit margin. These are competitive rates for your region that ensure you cover all costs while earning a sustainable income.</p>
+                                <p><strong>Tip:</strong> Consider adjusting your rates based on your experience level, specialty, and client budget.</p>
                             </div>
                         </div>
-                        
-                        <div class="results-explanation">
-                            <h4>How These Rates Are Calculated</h4>
-                            <p>Your hourly rate is calculated by dividing your annual income goal (including expenses) by your total billable hours per year. The daily rate assumes an 8-hour workday, and the monthly rate is your income goal plus expenses.</p>
-                        </div>
+                    </div>
+                    
+                    <!-- Ad Placeholder 3 -->
+                    <div class="ad-container" style="margin-top: 3rem;">
+                        <p>Advertisement</p>
+                        <p>Ad space (728x90)</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- ===== GOOGLE ADSENSE PLACEHOLDER ===== -->
-        <div class="container no-print">
-            <div class="adsense-container">
-                <div class="adsense-placeholder">
-                    <h4>Advertisement</h4>
-                    <p>Google AdSense Rectangle (300x250)</p>
-                    <p>Premium advertising space optimized for business and finance content.</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- ===== FAQ SECTION ===== -->
-        <section class="faq-section">
+        <!-- About Section -->
+        <section id="about" class="page-section">
             <div class="container">
-                <h2 style="text-align: center;">Frequently Asked Questions</h2>
-                <div class="faq-container">
-                    <div class="faq-item">
-                        <div class="faq-question">
-                            <span>How accurate is this freelance rate calculator?</span>
-                            <i>▼</i>
-                        </div>
-                        <div class="faq-answer">
-                            <p>Our calculator provides highly accurate rate calculations based on standard financial formulas used by business professionals. The accuracy depends on the realism of your inputs. We use industry-standard calculations that consider all essential factors including income goals, working hours, expenses, and vacation time.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="faq-item">
-                        <div class="faq-question">
-                            <span>Does this tool work for USA, UK, India, Pakistan, Canada, and Australia?</span>
-                            <i>▼</i>
-                        </div>
-                        <div class="faq-answer">
-                            <p>Yes! Our calculator supports multiple currencies including USD ($), GBP (£), EUR (€), CAD ($), AUD ($), INR (₹), and PKR (₨). It's designed for freelancers worldwide and takes into account different market conditions and cost structures across countries.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="faq-item">
-                        <div class="faq-question">
-                            <span>Is this tool free to use?</span>
-                            <i>▼</i>
-                        </div>
-                        <div class="faq-answer">
-                            <p>Yes, our freelance rate calculator is 100% free with no hidden costs or registration requirements. We believe every freelancer should have access to professional financial tools regardless of their budget.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="faq-item">
-                        <div class="faq-question">
-                            <span>Do you store my personal data?</span>
-                            <i>▼</i>
-                        </div>
-                        <div class="faq-answer">
-                            <p>No, we do not collect, store, or transmit any personal information. All calculations are performed locally in your browser. Your financial data never leaves your device, ensuring complete privacy and security.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="faq-item">
-                        <div class="faq-question">
-                            <span>Is this calculator suitable for beginners?</span>
-                            <i>▼</i>
-                        </div>
-                        <div class="faq-answer">
-                            <p>Absolutely! Our calculator is perfect for beginners who are establishing their first freelance rates. It helps you avoid common pricing mistakes and ensures your rates cover all your costs while providing the income you need. Many experienced freelancers also use it to validate or adjust their existing rates.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </section>
-
-    <!-- ===== ABOUT US PAGE ===== -->
-    <section id="about" class="page-section">
-        <div class="container">
-            <div class="content-card">
-                <div class="content-header">
+                <div class="page-content">
                     <h1>About RateCalc Pro</h1>
-                    <p>Professional freelance rate calculation tools for the global freelance community</p>
-                </div>
-                
-                <div class="content-body">
-                    <h2>Our Mission and Vision</h2>
-                    <p>RateCalc Pro was founded with a clear mission: to empower freelancers worldwide with professional-grade financial tools that help them build sustainable, profitable businesses. We believe that every independent professional deserves access to accurate, reliable rate calculation tools regardless of their location, budget, or experience level.</p>
                     
-                    <p>Our vision is to become the world's most trusted platform for freelance financial management, helping millions of freelancers across the United States, United Kingdom, India, Pakistan, Canada, Australia, and beyond to make informed pricing decisions that reflect their true value in the marketplace.</p>
+                    <p>RateCalc Pro is a comprehensive freelance rate calculator designed to help independent professionals determine optimal pricing for their services. Founded in 2023, our mission is to empower freelancers worldwide with the financial insights they need to build sustainable businesses.</p>
                     
-                    <h2>Why We Created This Platform</h2>
-                    <p>After years of working with freelancers across different industries and geographic regions, we identified a common challenge: most freelancers struggle with pricing their services appropriately. Many talented professionals either undervalue their work or price themselves out of the market due to lack of proper financial tools and guidance.</p>
+                    <h2>Our Mission</h2>
+                    <p>We believe that freelancers should be paid fairly for their work. Our calculator considers all the factors that go into professional pricing, from local market rates and living costs to business expenses and profit margins. We provide transparent calculations that help you understand exactly how your rates are determined.</p>
                     
-                    <p>We created RateCalc Pro to solve this problem by providing a simple, accurate, and accessible rate calculation tool that considers all the important factors: income goals, working hours, business expenses, and geographical market conditions.</p>
+                    <h2>Why Trust Our Calculator?</h2>
+                    <p>Our algorithms are based on extensive research into freelance markets across six countries: USA, UK, India, Pakistan, Canada, and Australia. We continuously update our data to reflect current market conditions, exchange rates, and economic factors.</p>
                     
-                    <h2>Our Core Values</h2>
+                    <p>Unlike simple hourly rate calculators, RateCalc Pro accounts for:</p>
+                    
                     <ul>
-                        <li><strong>Accuracy First:</strong> We use proven financial formulas and industry best practices to ensure reliable calculations</li>
-                        <li><strong>Privacy by Design:</strong> Your data stays on your device - we never collect or store personal information</li>
-                        <li><strong>Global Perspective:</strong> We support multiple currencies and understand different freelance market dynamics</li>
-                        <li><strong>Accessibility:</strong> Professional tools should be available to all freelancers, free of charge</li>
-                        <li><strong>Education:</strong> We explain the calculations so you understand your rates, not just receive numbers</li>
-                        <li><strong>Continuous Improvement:</strong> We regularly update our tools based on user feedback and market changes</li>
+                        <li>Regional cost of living differences</li>
+                        <li>Business expenses (software, equipment, insurance)</li>
+                        <li>Non-billable time (marketing, administration)</li>
+                        <li>Paid time off and sick days</li>
+                        <li>Profit margins for business growth</li>
+                        <li>Real-time currency conversion</li>
                     </ul>
                     
-                    <h2>Global Reach, Local Relevance</h2>
-                    <p>While our tools are used by freelancers worldwide, we pay special attention to the unique characteristics of major freelance markets. We understand that a freelance graphic designer in San Francisco faces different market conditions than one in Mumbai or Sydney. Our calculator helps you navigate these differences while maintaining a global perspective.</p>
+                    <h2>For All Freelancers</h2>
+                    <p>Whether you're a web developer in the USA, a graphic designer in India, a writer in the UK, or a consultant in Australia, RateCalc Pro provides personalized rate recommendations that make sense for your specific situation and location.</p>
                     
-                    <p>We've carefully studied freelance market trends in the United States, United Kingdom, India, Pakistan, Canada, and Australia to ensure our calculations reflect realistic market conditions in each region. Our multi-currency support and localized guidance make RateCalc Pro the perfect choice for today's borderless freelance economy.</p>
+                    <p>We're committed to helping the global freelance community thrive by providing tools that promote fair pricing, financial transparency, and business sustainability.</p>
                     
-                    <h2>Our Commitment to the Freelance Community</h2>
-                    <p>We're more than just a calculator - we're part of the global freelance ecosystem. We believe in the power of independent work to transform careers and economies. By providing free, accurate tools, we contribute to the success of freelancers everywhere, helping them build sustainable businesses and thrive in the new economy.</p>
-                    
-                    <p>Our team includes experienced freelancers, financial analysts, and software developers who understand the unique challenges of freelance work. We're committed to creating tools that genuinely help freelancers succeed, not just collect data or sell services.</p>
-                    
-                    <h2>The Future of RateCalc Pro</h2>
-                    <p>As the freelance economy continues to grow and evolve, so will our platform. We're constantly working on new features and improvements based on user feedback and changing market conditions. Our roadmap includes advanced financial planning tools, industry-specific rate guides, and educational resources to help freelancers at every stage of their journey.</p>
-                    
-                    <p>We invite you to join our community of forward-thinking freelancers who are taking control of their financial futures. Whether you're just starting your freelance career or you're an established professional looking to optimize your pricing strategy, RateCalc Pro is here to help you succeed.</p>
+                    <div style="text-align: center; margin: 3rem 0;">
+                        <a href="#calculator" class="btn" onclick="showPage('calculator')">
+                            <i class="fas fa-calculator"></i>
+                            Try Our Calculator
+                        </a>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- ===== PRIVACY POLICY PAGE ===== -->
-    <section id="privacy" class="page-section">
-        <div class="container">
-            <div class="content-card">
-                <div class="content-header">
+        <!-- Privacy Policy Section -->
+        <section id="privacy" class="page-section">
+            <div class="container">
+                <div class="page-content">
                     <h1>Privacy Policy</h1>
-                    <p>Last Updated: November 15, 2023</p>
-                </div>
-                
-                <div class="content-body">
-                    <h2>Introduction</h2>
-                    <p>RateCalc Pro ("we," "our," or "us") is committed to protecting your privacy. This Privacy Policy explains how we handle information when you use our website and services. We want to be completely transparent about our data practices.</p>
                     
-                    <h2>Information We Do NOT Collect</h2>
-                    <p>We want to be perfectly clear: RateCalc Pro does NOT collect, store, or process any personal information from our users. Specifically:</p>
+                    <p><strong>Last Updated:</strong> October 2023</p>
+                    
+                    <p>RateCalc Pro ("we," "our," or "us") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our freelance rate calculator and related services.</p>
+                    
+                    <h2>Information We Collect</h2>
+                    
+                    <h3>Personal Data</h3>
+                    <p>We do not require personal registration or account creation to use our calculator. However, we may collect limited information including:</p>
                     <ul>
-                        <li>We do not require registration, account creation, or login</li>
-                        <li>We do not collect names, email addresses, phone numbers, or contact information</li>
-                        <li>We do not store your calculation inputs, results, or any financial data</li>
-                        <li>We do not use tracking cookies for personal data collection</li>
-                        <li>We do not sell or share user data because we don't collect it</li>
-                        <li>We do not use analytics tools that track individual user behavior</li>
+                        <li>Calculator inputs (desired income, expenses, work hours, etc.)</li>
+                        <li>Currency preference selections</li>
+                        <li>Device information (browser type, operating system)</li>
+                        <li>Usage data (pages visited, time spent)</li>
                     </ul>
                     
-                    <h2>Local Browser-Based Calculations</h2>
-                    <p>All calculations on RateCalc Pro are performed locally in your web browser using JavaScript. Your data never leaves your device. We cannot see, access, or store any information you enter into our calculator. This approach ensures maximum privacy and security for our users.</p>
+                    <h3>Automatically Collected Information</h3>
+                    <p>When you access our website, we automatically collect certain information about your device, including information about your web browser, IP address, time zone, and some of the cookies that are installed on your device.</p>
                     
-                    <p>When you use our freelance rate calculator, all mathematical operations happen directly in your browser. No data is transmitted to our servers or any third-party services. This means your financial information, income goals, working hours, and expense data remain completely private and secure on your own device.</p>
+                    <h2>How We Use Your Information</h2>
+                    <p>We use the information we collect to:</p>
+                    <ul>
+                        <li>Provide and maintain our calculator service</li>
+                        <li>Improve and optimize our calculator algorithms</li>
+                        <li>Understand how users interact with our website</li>
+                        <li>Display relevant advertisements (through third-party ad networks)</li>
+                        <li>Prevent fraudulent activity</li>
+                    </ul>
                     
-                    <h2>Google AdSense Advertising</h2>
-                    <p>Our website uses Google AdSense to display advertisements. Google AdSense is a third-party advertising service that uses cookies to serve ads based on your visits to this site and other sites on the internet.</p>
+                    <h2>Data Storage and Security</h2>
+                    <p>Calculator inputs are processed locally in your browser and are not stored on our servers. We use industry-standard security measures to protect any information we collect, but no method of transmission over the Internet or electronic storage is 100% secure.</p>
                     
-                    <p>Google's use of advertising cookies enables it and its partners to serve ads to you based on your visit to our site and/or other sites on the internet. These cookies help show ads that are more relevant to your interests.</p>
+                    <h2>Third-Party Services</h2>
+                    <p>We use third-party services such as:</p>
+                    <ul>
+                        <li><strong>Google AdSense:</strong> For displaying relevant advertisements</li>
+                        <li><strong>Google Fonts:</strong> For typography on our website</li>
+                        <li><strong>Font Awesome:</strong> For iconography</li>
+                    </ul>
+                    <p>These services may collect information as described in their respective privacy policies.</p>
                     
-                    <p>You may opt out of personalized advertising by visiting <a href="https://www.google.com/settings/ads" target="_blank">Google Ads Settings</a> or by visiting <a href="https://www.aboutads.info" target="_blank">www.aboutads.info</a> to opt out of third-party vendor use of cookies for personalized advertising.</p>
-                    
-                    <h2>Third-Party Advertising Networks</h2>
-                    <p>We allow third-party companies to serve ads and/or collect certain anonymous information when you visit our website. These companies may use non-personally identifiable information (e.g., click stream information, browser type, time and date, subject of advertisements clicked or scrolled over) during your visits to this and other websites to provide advertisements about goods and services likely to be of greater interest to you.</p>
-                    
-                    <p>These companies typically use cookies or web beacons to collect this information. We have no access to or control over these cookies used by third-party advertisers.</p>
-                    
-                    <h2>Data Security</h2>
-                    <p>Since we don't collect or store any personal data, there is no risk of data breaches or unauthorized access to your information through our service. Your data remains securely on your own device.</p>
-                    
-                    <p>Our website uses standard HTTPS encryption to protect data in transit, although it's important to note that no data transmission over the Internet can be guaranteed to be 100% secure.</p>
-                    
-                    <h2>GDPR Compliance</h2>
-                    <p>Our service is fully compliant with GDPR (General Data Protection Regulation) requirements because we don't collect any personal data. Users maintain complete control over their information at all times.</p>
-                    
-                    <p>Since we don't process personal data, we don't need to appoint a Data Protection Officer, conduct Data Protection Impact Assessments, or maintain records of processing activities as required by GDPR for data controllers and processors.</p>
-                    
-                    <h2>Children's Privacy</h2>
-                    <p>Our Service does not address anyone under the age of 18. We do not knowingly collect personal information from anyone under 18 years of age. If you are a parent or guardian and you are aware that your child has provided us with personal data, please contact us immediately.</p>
+                    <h2>Your Rights</h2>
+                    <p>Depending on your location, you may have certain rights regarding your personal information, including:</p>
+                    <ul>
+                        <li>The right to access personal information we hold about you</li>
+                        <li>The right to request correction of inaccurate information</li>
+                        <li>The right to request deletion of your information</li>
+                        <li>The right to opt-out of certain data processing</li>
+                    </ul>
                     
                     <h2>Changes to This Privacy Policy</h2>
-                    <p>We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the "Last Updated" date. You are advised to review this Privacy Policy periodically for any changes.</p>
-                    
-                    <p>Changes to this Privacy Policy are effective when they are posted on this page. We will not reduce your rights under this Privacy Policy without your explicit consent.</p>
+                    <p>We may update this Privacy Policy from time to time to reflect changes in our practices or for other operational, legal, or regulatory reasons. We will notify you of any material changes by posting the new Privacy Policy on this page.</p>
                     
                     <h2>Contact Us</h2>
-                    <p>If you have any questions about this Privacy Policy, please contact us at: privacy@ratecalcpro.com</p>
-                    
-                    <p>We typically respond to privacy-related inquiries within 48 hours during business days. Please note that since we don't collect personal data, we cannot provide information about specific user data we might have, as we don't have any.</p>
+                    <p>If you have questions about this Privacy Policy, please contact us through the website.</p>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- ===== TERMS & CONDITIONS PAGE ===== -->
-    <section id="terms" class="page-section">
-        <div class="container">
-            <div class="content-card">
-                <div class="content-header">
+        <!-- Terms & Conditions Section -->
+        <section id="terms" class="page-section">
+            <div class="container">
+                <div class="page-content">
                     <h1>Terms & Conditions</h1>
-                    <p>Effective Date: November 15, 2023</p>
-                </div>
-                
-                <div class="content-body">
+                    
+                    <p><strong>Last Updated:</strong> October 2023</p>
+                    
+                    <p>Please read these Terms and Conditions ("Terms") carefully before using the RateCalc Pro website and freelance rate calculator (the "Service").</p>
+                    
                     <h2>Acceptance of Terms</h2>
-                    <p>By accessing and using RateCalc Pro ("the Service"), you accept and agree to be bound by the terms and provisions of this agreement. If you do not agree to these Terms & Conditions, please do not use our Service.</p>
+                    <p>By accessing or using our Service, you agree to be bound by these Terms. If you disagree with any part of the terms, you may not access the Service.</p>
                     
-                    <p>Your access to and use of the Service is conditioned on your acceptance of and compliance with these Terms. These Terms apply to all visitors, users, and others who access or use the Service.</p>
+                    <h2>Use License</h2>
+                    <p>We grant you a limited, non-exclusive, non-transferable, revocable license to use our Service for personal, non-commercial purposes subject to these Terms.</p>
                     
-                    <h2>Description of Service</h2>
-                    <p>RateCalc Pro provides an online freelance rate calculation tool for informational purposes. The Service allows users to input financial and working parameters to receive calculated rate recommendations for freelance services.</p>
+                    <h2>Calculator Disclaimer</h2>
+                    <p>Our freelance rate calculator provides estimates and recommendations based on the information you provide and our algorithms. These calculations are for informational purposes only and should not be considered financial, legal, or professional advice.</p>
                     
-                    <p>The Service includes our freelance rate calculator, educational content, and related resources designed to help freelancers make informed pricing decisions. All tools are provided free of charge with no registration requirements.</p>
+                    <p>We make no guarantees regarding:</p>
+                    <ul>
+                        <li>The accuracy of rate calculations</li>
+                        <li>Market acceptance of suggested rates</li>
+                        <li>Financial outcomes from using suggested rates</li>
+                        <li>Currency exchange rate accuracy</li>
+                    </ul>
                     
-                    <h2>No Financial, Legal, or Professional Advice</h2>
-                    <p>The Service provides calculations and information for educational and informational purposes only. The information provided by the Service is not financial, legal, tax, accounting, or professional advice. You should consult with qualified professionals for advice tailored to your specific situation.</p>
+                    <h2>User Responsibilities</h2>
+                    <p>You agree to:</p>
+                    <ul>
+                        <li>Use the Service only for lawful purposes</li>
+                        <li>Not attempt to hack, disrupt, or overload the Service</li>
+                        <li>Provide accurate information when using the calculator</li>
+                        <li>Verify calculator results with professional advisors when needed</li>
+                    </ul>
                     
-                    <p>Any decisions or actions taken based on information from the Service are taken at your own risk. We do not provide personalized financial advice, investment recommendations, or legal guidance. The calculator results should be used as a starting point for your own research and decision-making process.</p>
+                    <h2>Intellectual Property</h2>
+                    <p>The Service and its original content, features, and functionality are owned by RateCalc Pro and are protected by international copyright, trademark, patent, trade secret, and other intellectual property laws.</p>
                     
-                    <h2>Accuracy of Information</h2>
-                    <p>While we strive to provide accurate calculations, we do not guarantee the accuracy, completeness, or usefulness of any information provided by the Service. The calculations are based on the inputs you provide and standard mathematical formulas.</p>
-                    
-                    <p>Market conditions, individual circumstances, and other factors may affect actual freelance rates. We make reasonable efforts to ensure the accuracy of our calculations, but we cannot guarantee that the results will be appropriate for your specific situation.</p>
+                    <h2>Third-Party Links</h2>
+                    <p>Our Service may contain links to third-party websites or services that are not owned or controlled by RateCalc Pro. We have no control over, and assume no responsibility for, the content, privacy policies, or practices of any third-party websites or services.</p>
                     
                     <h2>Limitation of Liability</h2>
-                    <p>To the fullest extent permitted by applicable law, RateCalc Pro shall not be liable for any indirect, incidental, special, consequential, or punitive damages, or any loss of profits or revenues, whether incurred directly or indirectly, or any loss of data, use, goodwill, or other intangible losses resulting from:</p>
-                    <ul>
-                        <li>Your use or inability to use the Service</li>
-                        <li>Any decisions, actions, or financial outcomes resulting from use of the Service</li>
-                        <li>Unauthorized access to or use of our servers (though we don't collect data)</li>
-                        <li>Any interruption or cessation of transmission to or from the Service</li>
-                        <li>Any bugs, viruses, trojan horses, or similar that may be transmitted through the Service</li>
-                        <li>Any errors or omissions in any content or for any loss or damage incurred as a result of the use of any content posted, emailed, transmitted, or otherwise made available through the Service</li>
-                    </ul>
-                    
-                    <h2>Intellectual Property Rights</h2>
-                    <p>All content, features, and functionality of the Service, including but not limited to text, graphics, logos, icons, images, audio clips, digital downloads, data compilations, and software, are the exclusive property of RateCalc Pro and are protected by international copyright, trademark, patent, trade secret, and other intellectual property laws.</p>
-                    
-                    <p>You may not reproduce, distribute, modify, create derivative works of, publicly display, publicly perform, republish, download, store, or transmit any of the material on our Service, except as follows:</p>
-                    <ul>
-                        <li>Your computer may temporarily store copies of such materials in RAM incidental to your accessing and viewing those materials</li>
-                        <li>You may store files that are automatically cached by your Web browser for display enhancement purposes</li>
-                        <li>You may print or download one copy of a reasonable number of pages of the Service for your own personal, non-commercial use</li>
-                    </ul>
-                    
-                    <h2>User Conduct</h2>
-                    <p>You agree to use the Service only for lawful purposes and in accordance with these Terms. You agree not to use the Service:</p>
-                    <ul>
-                        <li>In any way that violates any applicable federal, state, local, or international law or regulation</li>
-                        <li>To transmit any advertising or promotional material without our prior written consent</li>
-                        <li>To impersonate or attempt to impersonate the Company or another user</li>
-                        <li>In any manner that could disable, overburden, damage, or impair the Service</li>
-                        <li>To engage in any other conduct that restricts or inhibits anyone's use or enjoyment of the Service</li>
-                    </ul>
-                    
-                    <h2>Termination</h2>
-                    <p>We may terminate or suspend your access to the Service immediately, without prior notice or liability, for any reason whatsoever, including without limitation if you breach the Terms.</p>
-                    
-                    <p>Upon termination, your right to use the Service will immediately cease. If you wish to terminate your use of the Service, you may simply discontinue using the Service.</p>
+                    <p>In no event shall RateCalc Pro, nor its directors, employees, partners, agents, suppliers, or affiliates, be liable for any indirect, incidental, special, consequential or punitive damages, including without limitation, loss of profits, data, use, goodwill, or other intangible losses, resulting from your use of the Service.</p>
                     
                     <h2>Changes to Terms</h2>
-                    <p>We reserve the right to modify or replace these Terms at any time. If a revision is material, we will provide at least 30 days' notice prior to any new terms taking effect. By continuing to access or use our Service after those revisions become effective, you agree to be bound by the revised terms.</p>
-                    
-                    <p>We will try to provide reasonable advance notice of any material changes to the Terms, but we reserve the right to update them at any time without notice. It is your responsibility to check these Terms periodically for changes.</p>
+                    <p>We reserve the right to modify or replace these Terms at any time. What constitutes a material change will be determined at our sole discretion. By continuing to access or use our Service after those revisions become effective, you agree to be bound by the revised terms.</p>
                     
                     <h2>Governing Law</h2>
                     <p>These Terms shall be governed and construed in accordance with the laws of the United States, without regard to its conflict of law provisions.</p>
                     
-                    <p>Our failure to enforce any right or provision of these Terms will not be considered a waiver of those rights. If any provision of these Terms is held to be invalid or unenforceable by a court, the remaining provisions of these Terms will remain in effect.</p>
-                    
                     <h2>Contact Information</h2>
-                    <p>Questions about the Terms & Conditions should be sent to us at: terms@ratecalcpro.com</p>
-                    
-                    <p>We aim to respond to all legitimate inquiries within a reasonable time frame. Please provide sufficient detail in your communication to help us understand and address your concerns effectively.</p>
+                    <p>If you have any questions about these Terms, please contact us through the website.</p>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- ===== DISCLAIMER PAGE ===== -->
-    <section id="disclaimer" class="page-section">
-        <div class="container">
-            <div class="content-card">
-                <div class="content-header">
+        <!-- Disclaimer Section -->
+        <section id="disclaimer" class="page-section">
+            <div class="container">
+                <div class="page-content">
                     <h1>Disclaimer</h1>
-                    <p>Important Information About Using Our Service</p>
-                </div>
-                
-                <div class="content-body">
-                    <h2>Informational Purpose Only</h2>
-                    <p>The information provided by RateCalc Pro is for general informational purposes only. All information on the Service is provided in good faith, however we make no representation or warranty of any kind, express or implied, regarding the accuracy, adequacy, validity, reliability, availability, or completeness of any information on the Service.</p>
                     
-                    <p>Under no circumstance shall we have any liability to you for any loss or damage of any kind incurred as a result of the use of the Service or reliance on any information provided on the Service. Your use of the Service and your reliance on any information on the Service is solely at your own risk.</p>
+                    <p><strong>Last Updated:</strong> October 2023</p>
                     
-                    <h2>Not Professional Advice</h2>
-                    <p>The Service does not provide financial, legal, tax, accounting, or professional advice. The freelance rate calculator is a tool that provides mathematical calculations based on user inputs. It should not be construed as professional financial advice or a substitute for consultation with qualified professionals.</p>
+                    <h2>No Professional Advice</h2>
+                    <p>The information provided by RateCalc Pro ("we," "us," or "our") on our website and through our freelance rate calculator is for general informational purposes only. All information is provided in good faith, however, we make no representation or warranty of any kind, express or implied, regarding the accuracy, adequacy, validity, reliability, availability, or completeness of any information.</p>
                     
-                    <p>Always seek the advice of financial advisors, accountants, or legal professionals with any questions you may have regarding your freelance business, tax obligations, legal requirements, or financial planning. Never disregard professional advice or delay in seeking it because of something you have read or calculated on this Service.</p>
+                    <p><strong>Our calculator is not a substitute for professional financial, legal, or business advice.</strong> Always seek the advice of qualified professionals regarding any financial decisions or business pricing strategies.</p>
                     
-                    <h2>No Guarantee of Results or Accuracy</h2>
-                    <p>RateCalc Pro cannot guarantee that using our calculator will result in specific freelance rates being accepted by clients or that you will achieve particular financial outcomes. Actual freelance rates depend on numerous factors including market conditions, your experience, negotiation skills, portfolio quality, and client budgets.</p>
+                    <h2>Financial Disclaimer</h2>
+                    <p>The freelance rate calculations provided are estimates based on algorithms and general market data. Actual rates may vary based on numerous factors including but not limited to:</p>
                     
-                    <p>While we strive for accuracy, we make no guarantees regarding the precision of calculations. The calculator provides estimates based on standard formulas, but actual results may vary based on numerous factors beyond our control or knowledge.</p>
+                    <ul>
+                        <li>Your specific skills and experience level</li>
+                        <li>Current market demand for your services</li>
+                        <li>Geographic location and local economy</li>
+                        <li>Industry-specific factors</li>
+                        <li>Client budgets and negotiation</li>
+                        <li>Currency exchange rate fluctuations</li>
+                    </ul>
                     
-                    <h2>Calculations Are Estimates</h2>
-                    <p>All calculations provided by the Service are estimates based on standard formulas. Actual freelance business finances may vary based on taxes, expenses, working hours, client relationships, market fluctuations, and other factors specific to your situation.</p>
+                    <p>We do not guarantee that using our suggested rates will result in client acquisition, specific income levels, or business success.</p>
                     
-                    <p>The calculations should be used as a starting point for your own research and decision-making, not as definitive rates. We recommend consulting with financial professionals and conducting market research to determine appropriate rates for your specific circumstances.</p>
+                    <h2>Earnings Disclaimer</h2>
+                    <p>There are inherent risks in freelancing and self-employment. Past performance or calculated rates do not guarantee future results. Your actual earnings may differ materially from any estimates or projections provided by our calculator.</p>
                     
-                    <h2>Use at Your Own Risk</h2>
-                    <p>Your use of the Service and your reliance on any information provided is solely at your own risk. We encourage users to verify any calculations, conduct independent research, and consult with financial professionals before making business decisions or setting final rates for freelance services.</p>
-                    
-                    <p>The Service is provided on an "as is" and "as available" basis. RateCalc Pro disclaims all warranties of any kind, whether express or implied, including but not limited to the implied warranties of merchantability, fitness for a particular purpose, and non-infringement.</p>
+                    <p>You are solely responsible for your business decisions, pricing strategies, and financial outcomes.</p>
                     
                     <h2>External Links Disclaimer</h2>
-                    <p>The Service may contain links to external websites that are not provided or maintained by or in any way affiliated with RateCalc Pro. Please note that we do not guarantee the accuracy, relevance, timeliness, or completeness of any information on these external websites.</p>
+                    <p>Our website may contain links to external websites that are not provided or maintained by or in any way affiliated with us. Please note that we do not guarantee the accuracy, relevance, timeliness, or completeness of any information on these external websites.</p>
                     
-                    <p>Links are provided for convenience only. We have no control over the content, privacy policies, or practices of any third-party websites and assume no responsibility for their content. The inclusion of any links does not necessarily imply a recommendation or endorsement of the views expressed within them.</p>
+                    <h2>Advertisements Disclaimer</h2>
+                    <p>Our website displays advertisements through Google AdSense and potentially other advertising networks. We do not endorse the products or services advertised, and we are not responsible for the content of advertisements or the actions of advertisers.</p>
                     
-                    <h2>Fair Use Disclaimer</h2>
-                    <p>RateCalc Pro may use copyrighted material which has not always been specifically authorized by the copyright owner. We are making such material available for criticism, comment, news reporting, teaching, scholarship, or research.</p>
+                    <p>The presence of advertisements does not constitute an endorsement, recommendation, or sponsorship by RateCalc Pro.</p>
                     
-                    <p>We believe this constitutes a "fair use" of any such copyrighted material as provided for in section 107 of the United States Copyright law. If you wish to use copyrighted material from the Service for purposes of your own that go beyond fair use, you must obtain permission from the copyright owner.</p>
-                    
-                    <h2>Views Expressed Disclaimer</h2>
-                    <p>The views and opinions expressed on this Service are those of the authors and do not necessarily reflect the official policy or position of any other agency, organization, employer, or company. Comments published by users are their sole responsibility.</p>
-                    
-                    <p>RateCalc Pro takes no responsibility and assumes no liability for any content posted by you or any third party. We reserve the right to remove any content that we determine in our sole discretion to be unlawful, offensive, threatening, libelous, defamatory, pornographic, obscene, or otherwise objectionable.</p>
+                    <h2>Limitation of Liability</h2>
+                    <p>To the maximum extent permitted by applicable law, we exclude all representations, warranties, and conditions relating to our website and the use of our calculator. In no event will we be liable for any loss or damage including without limitation, indirect or consequential loss or damage, or any loss or damage whatsoever arising from loss of data or profits arising out of, or in connection with, the use of our Service.</p>
                     
                     <h2>Acceptance of Disclaimer</h2>
-                    <p>By using RateCalc Pro, you hereby consent to our Disclaimer and agree to its terms. If you do not agree with any part of this Disclaimer, please discontinue use of our Service immediately.</p>
+                    <p>By using our website and calculator, you hereby consent to our disclaimer and agree to its terms. If you do not agree with any part of this disclaimer, please discontinue use of our Service immediately.</p>
                     
-                    <p>Your continued use of our Service will be regarded as acceptance of our Disclaimer and any updates to it. We recommend that you check this Disclaimer periodically for any changes.</p>
-                    
-                    <h2>Updates to Disclaimer</h2>
-                    <p>We reserve the right to make additions, deletions, or modifications to the contents of this Disclaimer at any time without prior notice. It is your responsibility to check this Disclaimer periodically for changes.</p>
-                    
-                    <p>We will indicate at the top of this page the date the Disclaimer was last revised. Your continued use of the Service after any such changes constitutes your acceptance of the new Disclaimer.</p>
-                    
-                    <h2>Contact Information</h2>
-                    <p>If you have any questions or concerns about this Disclaimer, please contact us at: disclaimer@ratecalcpro.com</p>
-                    
-                    <p>We value transparency and welcome questions about our policies. Please allow reasonable time for us to respond to your inquiries, especially during periods of high volume.</p>
+                    <p>We reserve the right to make additions, deletions, or modifications to this disclaimer at any time without prior notice.</p>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
-    <!-- ===== FOOTER ===== -->
+    <!-- Footer -->
     <footer>
-        <div class="container">
+        <div class="footer-container">
             <div class="footer-content">
-                <div class="footer-about">
-                    <div class="footer-logo">RateCalc Pro</div>
-                    <p class="footer-description">Professional freelance rate calculator for global professionals. Free, private, and accurate rate calculations for freelancers worldwide.</p>
+                <div>
+                    <div class="footer-logo">
+                        <i class="fas fa-calculator"></i>
+                        RateCalc Pro
+                    </div>
+                    <p style="max-width: 300px;">Professional freelance rate calculator for USA, UK, India, Pakistan, Canada, Australia.</p>
                 </div>
                 
                 <div class="footer-links">
-                    <h4>Navigation</h4>
-                    <ul>
-                        <li><a href="#home" data-page="home">Home</a></li>
-                        <li><a href="#about" data-page="about">About Us</a></li>
-                        <li><a href="#privacy" data-page="privacy">Privacy Policy</a></li>
-                        <li><a href="#terms" data-page="terms">Terms & Conditions</a></li>
-                        <li><a href="#disclaimer" data-page="disclaimer">Disclaimer</a></li>
-                    </ul>
+                    <h3 style="font-size: 1rem; margin-bottom: 1rem;">Quick Links</h3>
+                    <a href="#home" onclick="showPage('home')">Home</a>
+                    <a href="#calculator" onclick="showPage('calculator')">Calculator</a>
+                    <a href="#about" onclick="showPage('about')">About</a>
+                    <a href="#privacy" onclick="showPage('privacy')">Privacy Policy</a>
+                    <a href="#terms" onclick="showPage('terms')">Terms & Conditions</a>
+                    <a href="#disclaimer" onclick="showPage('disclaimer')">Disclaimer</a>
                 </div>
                 
                 <div class="footer-links">
-                    <h4>Legal</h4>
-                    <ul>
-                        <li><a href="#privacy" data-page="privacy">Privacy Policy</a></li>
-                        <li><a href="#terms" data-page="terms">Terms & Conditions</a></li>
-                        <li><a href="#disclaimer" data-page="disclaimer">Disclaimer</a></li>
-                    </ul>
+                    <h3 style="font-size: 1rem; margin-bottom: 1rem;">Countries</h3>
+                    <span style="color: var(--text-secondary);">USA</span>
+                    <span style="color: var(--text-secondary);">UK</span>
+                    <span style="color: var(--text-secondary);">India</span>
+                    <span style="color: var(--text-secondary);">Pakistan</span>
+                    <span style="color: var(--text-secondary);">Canada</span>
+                    <span style="color: var(--text-secondary);">Australia</span>
                 </div>
             </div>
             
-            <!-- Google AdSense Footer Placeholder -->
-            <div class="adsense-container no-print">
-                <div class="adsense-placeholder">
-                    <h4>Advertisement</h4>
-                    <p>Google AdSense Footer Banner (728x90)</p>
-                    <p>Premium advertising space optimized for business and finance content.</p>
-                </div>
-            </div>
-            
-            <div class="copyright">
-                &copy; 2023 RateCalc Pro. All rights reserved. This tool is for informational purposes only.
+            <div class="footer-bottom">
+                <p>&copy; 2023 RateCalc Pro. All rights reserved.</p>
+                <p>This site uses cookies and displays advertisements. By using our site, you agree to our <a href="#privacy" onclick="showPage('privacy')" style="color: var(--primary-color);">Privacy Policy</a> and <a href="#terms" onclick="showPage('terms')" style="color: var(--primary-color);">Terms</a>.</p>
             </div>
         </div>
     </footer>
 
     <script>
-        // ===== DOM ELEMENTS =====
-        const themeToggle = document.getElementById('themeToggle');
-        const themeIcon = document.getElementById('themeIcon');
-        const mobileThemeToggle = document.getElementById('mobileThemeToggle');
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const mobileMenuClose = document.getElementById('mobileMenuClose');
-        const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
-        const mobileMenu = document.getElementById('mobileMenu');
-        const calculateBtn = document.getElementById('calculateBtn');
-        const resultsSection = document.getElementById('resultsSection');
-        const hourlyRate = document.getElementById('hourlyRate');
-        const dailyRate = document.getElementById('dailyRate');
-        const monthlyRate = document.getElementById('monthlyRate');
-        const currencyDropdownBtn = document.getElementById('currencyDropdownBtn');
-        const currencyDropdown = document.getElementById('currencyDropdown');
-        const selectedCurrencySpan = document.getElementById('selectedCurrency');
-        const currencyOptions = document.querySelectorAll('.currency-option');
-        const faqItems = document.querySelectorAll('.faq-item');
-        const pageLinks = document.querySelectorAll('[data-page]');
-        const pageSections = document.querySelectorAll('.page-section');
-        
-        // ===== CURRENCY CONFIGURATION =====
-        const currencyConfig = {
-            'USD': { symbol: '$', name: 'US Dollar' },
-            'GBP': { symbol: '£', name: 'British Pound' },
-            'EUR': { symbol: '€', name: 'Euro' },
-            'CAD': { symbol: '$', name: 'Canadian Dollar' },
-            'AUD': { symbol: '$', name: 'Australian Dollar' },
-            'INR': { symbol: '₹', name: 'Indian Rupee' },
-            'PKR': { symbol: '₨', name: 'Pakistani Rupee' }
-        };
-        
-        let selectedCurrency = 'USD';
-        
         // ===== THEME TOGGLE =====
-        function toggleTheme() {
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = themeToggle.querySelector('i');
+        
+        // Check for saved theme or prefer-color-scheme
+        const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+        const currentTheme = localStorage.getItem('theme');
+        
+        if (currentTheme === 'dark' || (!currentTheme && prefersDarkScheme.matches)) {
+            document.body.classList.add('dark-mode');
+            themeIcon.className = 'fas fa-sun';
+        } else {
+            themeIcon.className = 'fas fa-moon';
+        }
+        
+        themeToggle.addEventListener('click', () => {
             document.body.classList.toggle('dark-mode');
             
             if (document.body.classList.contains('dark-mode')) {
-                themeIcon.textContent = '☀️';
                 localStorage.setItem('theme', 'dark');
+                themeIcon.className = 'fas fa-sun';
             } else {
-                themeIcon.textContent = '🌙';
                 localStorage.setItem('theme', 'light');
+                themeIcon.className = 'fas fa-moon';
             }
-        }
+        });
         
-        themeToggle.addEventListener('click', toggleTheme);
-        mobileThemeToggle.addEventListener('click', toggleTheme);
+        // ===== MOBILE MENU =====
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileMenuClose = document.getElementById('mobileMenuClose');
         
-        // Load saved theme
-        const savedTheme = localStorage.getItem('theme');
-        if (savedTheme === 'dark') {
-            document.body.classList.add('dark-mode');
-            themeIcon.textContent = '☀️';
-        }
-        
-        // ===== PREMIUM MOBILE MENU =====
         function openMobileMenu() {
-            mobileMenu.classList.add('active');
             mobileMenuOverlay.classList.add('active');
+            mobileMenu.classList.add('active');
             document.body.style.overflow = 'hidden';
         }
         
         function closeMobileMenu() {
-            mobileMenu.classList.remove('active');
             mobileMenuOverlay.classList.remove('active');
-            document.body.style.overflow = '';
+            mobileMenu.classList.remove('active');
+            document.body.style.overflow = 'auto';
         }
         
         mobileMenuBtn.addEventListener('click', openMobileMenu);
         mobileMenuClose.addEventListener('click', closeMobileMenu);
         mobileMenuOverlay.addEventListener('click', closeMobileMenu);
         
-        // ===== PAGE NAVIGATION SYSTEM =====
+        // Close mobile menu on escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeMobileMenu();
+            }
+        });
+        
+        // ===== PAGE NAVIGATION =====
         function showPage(pageId) {
-            // Hide all page sections
-            pageSections.forEach(section => {
+            // Hide all pages
+            document.querySelectorAll('.page-section').forEach(section => {
                 section.classList.remove('active');
             });
             
-            // Show selected page section
-            const targetPage = document.getElementById(pageId);
-            if (targetPage) {
-                targetPage.classList.add('active');
-                
-                // Scroll to top of the page
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
-                });
-            }
+            // Show selected page
+            document.getElementById(pageId).classList.add('active');
             
-            // Close mobile menu if open
-            closeMobileMenu();
+            // Update URL hash without scrolling
+            history.pushState(null, null, `#${pageId}`);
+            
+            // Scroll to top of page
+            window.scrollTo(0, 0);
         }
         
-        // Add click event to all page links
-        pageLinks.forEach(link => {
-            link.addEventListener('click', (e) => {
-                e.preventDefault();
-                const pageId = link.getAttribute('data-page') || link.getAttribute('href').substring(1);
-                showPage(pageId);
-            });
-        });
-        
-        // Handle initial page load and URL hash
+        // Handle initial page load based on URL hash
         window.addEventListener('load', () => {
-            const hash = window.location.hash.substring(1);
-            const validPages = ['home', 'about', 'privacy', 'terms', 'disclaimer'];
+            const hash = window.location.hash.substring(1) || 'home';
+            const validPages = ['home', 'calculator', 'about', 'privacy', 'terms', 'disclaimer'];
             
-            if (hash && validPages.includes(hash)) {
+            if (validPages.includes(hash)) {
                 showPage(hash);
             } else {
                 showPage('home');
             }
-            
-            // Calculate initial rates
-            calculateRates();
         });
         
-        // ===== PREMIUM CURRENCY SELECTOR =====
-        function toggleCurrencyDropdown() {
-            currencyDropdown.classList.toggle('active');
-            currencyDropdownBtn.classList.toggle('active');
-        }
-        
-        function selectCurrency(currency) {
-            selectedCurrency = currency;
-            const config = currencyConfig[currency];
-            selectedCurrencySpan.textContent = `${currency} (${config.symbol})`;
+        // Handle browser back/forward buttons
+        window.addEventListener('popstate', () => {
+            const hash = window.location.hash.substring(1) || 'home';
+            const validPages = ['home', 'calculator', 'about', 'privacy', 'terms', 'disclaimer'];
             
-            // Update active state
-            currencyOptions.forEach(option => {
-                if (option.dataset.currency === currency) {
-                    option.classList.add('active');
-                } else {
-                    option.classList.remove('active');
-                }
-            });
-            
-            // Close dropdown
-            currencyDropdown.classList.remove('active');
-            currencyDropdownBtn.classList.remove('active');
-            
-            // Recalculate if results are showing
-            if (resultsSection.classList.contains('active')) {
-                calculateRates();
+            if (validPages.includes(hash)) {
+                showPage(hash);
             }
-        }
+        });
         
-        currencyDropdownBtn.addEventListener('click', toggleCurrencyDropdown);
+        // ===== CURRENCY SELECTOR =====
+        const currencyDropdownBtn = document.getElementById('currencyDropdownBtn');
+        const currencyDropdown = document.getElementById('currencyDropdown');
+        const selectedCurrency = document.getElementById('selectedCurrency');
+        const currencyOptions = document.querySelectorAll('.currency-option');
+        
+        // Currency data with conversion rates to USD (example rates)
+        const currencyData = {
+            'USD': { symbol: '$', rate: 1, name: 'USD ($) - United States' },
+            'GBP': { symbol: '£', rate: 0.79, name: 'GBP (£) - United Kingdom' },
+            'EUR': { symbol: '€', rate: 0.92, name: 'EUR (€) - Europe' },
+            'CAD': { symbol: '$', rate: 1.36, name: 'CAD ($) - Canada' },
+            'AUD': { symbol: '$', rate: 1.56, name: 'AUD ($) - Australia' },
+            'INR': { symbol: '₹', rate: 83.16, name: 'INR (₹) - India' },
+            'PKR': { symbol: '₨', rate: 277.5, name: 'PKR (₨) - Pakistan' }
+        };
+        
+        let currentCurrency = 'USD';
+        
+        currencyDropdownBtn.addEventListener('click', () => {
+            currencyDropdownBtn.classList.toggle('active');
+            currencyDropdown.classList.toggle('active');
+        });
         
         currencyOptions.forEach(option => {
             option.addEventListener('click', () => {
-                selectCurrency(option.dataset.currency);
+                const currency = option.getAttribute('data-currency');
+                
+                // Update selected currency
+                currentCurrency = currency;
+                selectedCurrency.textContent = currencyData[currency].name.split(' - ')[0];
+                
+                // Update active state
+                currencyOptions.forEach(opt => opt.classList.remove('active'));
+                option.classList.add('active');
+                
+                // Close dropdown
+                currencyDropdownBtn.classList.remove('active');
+                currencyDropdown.classList.remove('active');
+                
+                // Recalculate rates if results are shown
+                if (document.getElementById('resultsSection').classList.contains('active')) {
+                    calculateRates();
+                }
             });
         });
         
         // Close currency dropdown when clicking outside
-        document.addEventListener('click', (event) => {
-            if (!currencyDropdownBtn.contains(event.target) && !currencyDropdown.contains(event.target)) {
-                currencyDropdown.classList.remove('active');
+        document.addEventListener('click', (e) => {
+            if (!currencyDropdownBtn.contains(e.target) && !currencyDropdown.contains(e.target)) {
                 currencyDropdownBtn.classList.remove('active');
+                currencyDropdown.classList.remove('active');
             }
         });
         
-        // ===== FAQ ACCORDION =====
-        faqItems.forEach(item => {
-            const question = item.querySelector('.faq-question');
-            
-            question.addEventListener('click', () => {
-                // Close other FAQ items
-                faqItems.forEach(otherItem => {
-                    if (otherItem !== item && otherItem.classList.contains('active')) {
-                        otherItem.classList.remove('active');
-                    }
-                });
-                
-                // Toggle current FAQ item
-                item.classList.toggle('active');
-            });
-        });
+        // ===== RATE CALCULATOR =====
+        const rateCalculator = document.getElementById('rateCalculator');
+        const resultsSection = document.getElementById('resultsSection');
         
-        // ===== RATE CALCULATION =====
+        // Format currency based on selected currency
+        function formatCurrency(amount) {
+            const currency = currencyData[currentCurrency];
+            const formattedAmount = new Intl.NumberFormat('en-US', {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+            }).format(amount * currency.rate);
+            
+            return `${currency.symbol}${formattedAmount}`;
+        }
+        
+        // Calculate freelance rates
         function calculateRates() {
-            // Get input values
-            const incomeGoal = parseFloat(document.getElementById('incomeGoal').value) || 0;
-            const weeklyHours = parseFloat(document.getElementById('weeklyHours').value) || 0;
-            const weeksPerYear = parseFloat(document.getElementById('weeksPerYear').value) || 0;
-            const expenses = parseFloat(document.getElementById('expenses').value) || 0;
-            const currencySymbol = currencyConfig[selectedCurrency].symbol;
+            // Get form values
+            const desiredIncome = parseFloat(document.getElementById('desiredIncome').value) || 0;
+            const businessExpenses = parseFloat(document.getElementById('businessExpenses').value) || 0;
+            const workHours = parseFloat(document.getElementById('workHours').value) || 0;
+            const vacationWeeks = parseFloat(document.getElementById('vacationWeeks').value) || 0;
+            const billablePercentage = parseFloat(document.getElementById('billablePercentage').value) || 0;
+            const profitMargin = parseFloat(document.getElementById('profitMargin').value) || 0;
             
             // Validate inputs
-            if (!incomeGoal || !weeklyHours || !weeksPerYear) {
-                resultsSection.classList.remove('active');
-                return;
+            if (desiredIncome <= 0 || workHours <= 0 || billablePercentage <= 0) {
+                alert('Please enter valid values for all required fields.');
+                return false;
             }
             
-            if (weeklyHours <= 0 || weeklyHours > 168) {
-                alert('Please enter a valid number of weekly working hours (1-168).');
-                return;
-            }
+            // Calculate working weeks per year
+            const workingWeeksPerYear = 52 - vacationWeeks;
             
-            if (weeksPerYear <= 0 || weeksPerYear > 52) {
-                alert('Please enter a valid number of weeks worked per year (1-52).');
-                return;
-            }
+            // Calculate total hours available for work per year
+            const totalHoursPerYear = workingWeeksPerYear * workHours;
             
-            // Calculate annual income goal (including expenses)
-            const annualIncomeGoal = (incomeGoal + expenses) * 12;
+            // Calculate billable hours per year
+            const billableHoursPerYear = totalHoursPerYear * (billablePercentage / 100);
             
-            // Calculate total billable hours per year
-            const annualBillableHours = weeklyHours * weeksPerYear;
+            // Calculate total needed revenue (income + expenses + profit)
+            const profitAmount = desiredIncome * (profitMargin / 100);
+            const totalRevenueNeeded = desiredIncome + businessExpenses + profitAmount;
             
-            // Calculate hourly rate
-            const hourlyRateValue = annualIncomeGoal / annualBillableHours;
+            // Calculate rates
+            const hourlyRate = totalRevenueNeeded / billableHoursPerYear;
+            const dailyRate = hourlyRate * 8;
+            const weeklyRate = hourlyRate * workHours;
             
-            // Calculate daily rate (assuming 8-hour workday)
-            const dailyRateValue = hourlyRateValue * 8;
-            
-            // Calculate monthly rate
-            const monthlyRateValue = incomeGoal + expenses;
-            
-            // Format numbers with currency symbol
-            function formatCurrency(value) {
-                if (selectedCurrency === 'INR' || selectedCurrency === 'PKR') {
-                    // For Indian and Pakistani rupees, format with commas
-                    return `${currencySymbol}${Math.round(value).toLocaleString()}`;
-                }
-                return `${currencySymbol}${value.toFixed(2)}`;
-            }
-            
-            // Update results
-            hourlyRate.textContent = formatCurrency(hourlyRateValue);
-            dailyRate.textContent = formatCurrency(dailyRateValue);
-            monthlyRate.textContent = formatCurrency(monthlyRateValue);
+            // Display results
+            document.getElementById('hourlyRate').textContent = formatCurrency(hourlyRate);
+            document.getElementById('dailyRate').textContent = formatCurrency(dailyRate);
+            document.getElementById('weeklyRate').textContent = formatCurrency(weeklyRate);
             
             // Show results section
             resultsSection.classList.add('active');
+            
+            // Scroll to results
+            setTimeout(() => {
+                resultsSection.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }, 300);
+            
+            return false;
         }
         
-        // ===== REAL-TIME CALCULATIONS =====
-        calculateBtn.addEventListener('click', calculateRates);
-        
-        // Auto-calculate on input change
-        document.querySelectorAll('#incomeGoal, #weeklyHours, #weeksPerYear, #expenses').forEach(input => {
-            input.addEventListener('input', calculateRates);
+        // Handle form submission
+        rateCalculator.addEventListener('submit', (e) => {
+            e.preventDefault();
+            calculateRates();
         });
         
-        // ===== SMOOTH SCROLLING FOR IN-PAGE ANCHORS =====
-        document.querySelectorAll('a[href^="#"]:not([data-page])').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    // Ensure we're on the home page
-                    showPage('home');
-                    
-                    // Scroll to element
-                    setTimeout(() => {
-                        window.scrollTo({
-                            top: targetElement.offsetTop - 80,
-                            behavior: 'smooth'
-                        });
-                    }, 100);
-                }
-            });
-        });
+        // ===== INITIALIZATION =====
+        // Set default form values
+        document.getElementById('desiredIncome').value = 60000;
+        document.getElementById('businessExpenses').value = 10000;
+        document.getElementById('workHours').value = 40;
+        document.getElementById('vacationWeeks').value = 4;
+        document.getElementById('billablePercentage').value = 70;
+        document.getElementById('profitMargin').value = 20;
         
-        // ===== PERFORMANCE OPTIMIZATION =====
-        // Debounce calculation for real-time updates
-        let calculationTimeout;
-        const calculationInputs = ['#incomeGoal', '#weeklyHours', '#weeksPerYear', '#expenses'];
-        
-        calculationInputs.forEach(selector => {
-            const input = document.querySelector(selector);
-            if (input) {
-                input.addEventListener('input', () => {
-                    clearTimeout(calculationTimeout);
-                    calculationTimeout = setTimeout(calculateRates, 300);
-                });
+        // Close mobile menu on window resize (if resizing to desktop)
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 900) {
+                closeMobileMenu();
             }
         });
+        
+        // ===== RESPONSIVE UTILITIES =====
+        // Handle responsive adjustments
+        function handleResponsiveAdjustments() {
+            const width = window.innerWidth;
+            
+            // Adjust container padding for very large screens
+            if (width > 1600) {
+                document.querySelectorAll('.container, .nav-container, .footer-container').forEach(el => {
+                    el.style.paddingLeft = '0';
+                    el.style.paddingRight = '0';
+                });
+            }
+        }
+        
+        // Initial call
+        handleResponsiveAdjustments();
+        
+        // Call on resize
+        window.addEventListener('resize', handleResponsiveAdjustments);
     </script>
 </body>
 </html>
