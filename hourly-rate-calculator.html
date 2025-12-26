@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hourly Rate Calculator for Freelancers - Calculate Your Per Hour Rate</title>
+    <meta name="description" content="Free hourly rate calculator for freelancers. Calculate your ideal per hour rate based on expenses, desired income, billable hours, and location.">
+    <link rel="canonical" href="https://kaif1116.github.io/Freelance-Rate-Calculator/hourly-rate-calculator.html">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { line-height: 1.6; color: #333; background: linear-gradient(135deg, #ed64a6 0%, #805ad5 100%); min-height: 100vh; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+        header { text-align: center; padding: 40px 20px; background: white; border-radius: 12px; margin-bottom: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        h1 { font-size: 2.8rem; margin-bottom: 15px; color: #2d3748; }
+        .subtitle { font-size: 1.2rem; color: #4a5568; max-width: 800px; margin: 0 auto 30px; }
+        .nav-links { display: flex; justify-content: center; flex-wrap: wrap; gap: 15px; margin: 30px 0; }
+        .nav-links a { color: #ed64a6; text-decoration: none; padding: 10px 20px; border: 2px solid #ed64a6; border-radius: 6px; transition: all 0.3s; font-weight: 500; }
+        .nav-links a:hover { background: #ed64a6; color: white; }
+        .calculator-container { background: white; padding: 40px; border-radius: 12px; box-shadow: 0 15px 35px rgba(0,0,0,0.1); margin-bottom: 40px; }
+        .calculator-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-bottom: 40px; }
+        .input-group { margin-bottom: 20px; }
+        label { display: block; margin-bottom: 8px; font-weight: 600; color: #2d3748; }
+        input, select { width: 100%; padding: 12px 15px; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 1rem; transition: border 0.3s; }
+        input:focus, select:focus { outline: none; border-color: #ed64a6; }
+        .results-container { background: #fff5f7; padding: 30px; border-radius: 10px; margin-top: 30px; border-left: 4px solid #ed64a6; }
+        .results-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-top: 20px; }
+        .result-box { background: white; padding: 20px; border-radius: 8px; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.05); border: 2px solid #fed7e2; }
+        .result-value { font-size: 2rem; font-weight: bold; color: #ed64a6; margin: 10px 0; }
+        .result-label { color: #718096; font-size: 0.9rem; }
+        .cta-button { background: #ed64a6; color: white; border: none; padding: 16px 32px; font-size: 1.1rem; border-radius: 8px; cursor: pointer; transition: background 0.3s; font-weight: 600; width: 100%; }
+        .cta-button:hover { background: #d53f8c; }
+        .content-section { background: white; padding: 40px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); margin-bottom: 40px; }
+        h2 { color: #2d3748; margin: 30px 0 20px; font-size: 1.8rem; border-bottom: 2px solid #e2e8f0; padding-bottom: 10px; }
+        h3 { color: #4a5568; margin: 25px 0 15px; font-size: 1.4rem; }
+        p { margin-bottom: 18px; font-size: 1.05rem; }
+        ul, ol { margin-left: 25px; margin-bottom: 20px; }
+        li { margin-bottom: 10px; }
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+        th { background: #ed64a6; color: white; padding: 12px; text-align: left; }
+        td { padding: 12px; border-bottom: 1px solid #e2e8f0; }
+        .tip-box { background: #fff5f7; border-left: 4px solid #ed64a6; padding: 20px; margin: 25px 0; border-radius: 0 8px 8px 0; }
+        .conclusion { background: linear-gradient(135deg, #fff5f7 0%, #fed7e2 100%); padding: 40px; border-radius: 12px; text-align: center; margin-top: 40px; }
+        footer { text-align: center; margin-top: 50px; padding-top: 30px; border-top: 1px solid #e2e8f0; color: #718096; font-size: 0.9rem; }
+        .breadcrumb { margin: 20px 0; color: #718096; }
+        .breadcrumb a { color: #ed64a6; text-decoration: none; }
+        .expense-category { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin: 20px 0; }
+        .category-box { background: #f7fafc; padding: 20px; border-radius: 8px; }
+        @media (max-width: 768px) {
+            .container { padding: 15px; }
+            h1 { font-size: 2.2rem; }
+            .calculator-container, .content-section { padding: 20px; }
+            .nav-links { gap: 10px; }
+            .nav-links a { padding: 8px 15px; font-size: 0.9rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="breadcrumb">
+            <a href="index.html">Home</a> → Hourly Rate Calculator
+        </div>
+
+        <header>
+            <h1>Hourly Rate Calculator for Freelancers</h1>
+            <p class="subtitle">Calculate your perfect hourly rate. Our advanced calculator considers expenses, desired income, billable hours, taxes, and location to give you accurate rate recommendations.</p>
+            
+            <div class="nav-links">
+                <a href="index.html">Main Calculator</a>
+                <a href="freelance-pricing-guide.html">Pricing Guide</a>
+                <a href="project-rate-calculator.html">Project Calculator</a>
+                <a href="freelance-contracts.html">Freelance Contracts</a>
+                <a href="global-freelance-rates.html">Global Rates</a>
+            </div>
+        </header>
+
+        <div class="calculator-container">
+            <h2 style="text-align: center; color: #ed64a6;">Calculate Your Hourly Rate</h2>
+            <p style="text-align: center; margin-bottom: 30px; color: #718096;">Detailed calculation with expense breakdown and profit analysis</p>
+            
+            <div class="calculator-grid">
+                <div>
+                    <div class="input-group">
+                        <label for="desiredIncome">Desired Annual Income ($)</label>
+                        <input type="number" id="desiredIncome" placeholder="e.g., 60000" value="60000">
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="workWeeks">Work Weeks Per Year</label>
+                        <input type="number" id="workWeeks" placeholder="e.g., 48" value="48" min="1" max="52">
+                        <small style="color: #718096;">Standard: 48 (52 weeks - 4 weeks vacation)</small>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="hoursPerWeek">Billable Hours Per Week</label>
+                        <input type="number" id="hoursPerWeek" placeholder="e.g., 30" value="30" min="1" max="60">
+                        <small style="color: #718096;">Realistic: 25-35 (accounts for non-billable work)</small>
+                    </div>
+                </div>
+                
+                <div>
+                    <div class="input-group">
+                        <label for="annualExpenses">Annual Business Expenses ($)</label>
+                        <input type="number" id="annualExpenses" placeholder="e.g., 12000" value="12000">
+                        <small style="color: #718096;">Includes software, equipment, taxes, insurance</small>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="profitMargin">Profit Margin (%)</label>
+                        <input type="number" id="profitMargin" placeholder="e.g., 30" value="30" min="0" max="100">
+                        <small style="color: #718096;">For business growth and investments</small>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="country">Country</label>
+                        <select id="country">
+                            <option value="USA">United States</option>
+                            <option value="UK">United Kingdom</option>
+                            <option value="Canada">Canada</option>
+                            <option value="Australia">Australia</option>
+                            <option value="Germany">Germany</option>
+                            <option value="India">India</option>
+                            <option value="Pakistan">Pakistan</option>
+                            <option value="Other">Other Country</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="background: #f7fafc; padding: 20px; border-radius: 8px; margin: 20px 0;">
+                <h4 style="color: #4a5568; margin-top: 0;">Quick Expense Breakdown (Optional)</h4>
+                <div class="expense-category">
+                    <div class="category-box">
+                        <label for="softwareCosts">Software/Subscriptions ($/year)</label>
+                        <input type="number" id="softwareCosts" placeholder="e.g., 1200" value="1200">
+                    </div>
+                    <div class="category-box">
+                        <label for="equipmentCosts">Equipment/Depreciation ($/year)</label>
+                        <input type="number" id="equipmentCosts" placeholder="e.g., 1000" value="1000">
+                    </div>
+                    <div class="category-box">
+                        <label for="taxPercentage">Tax Rate (%)</label>
+                        <input type="number" id="taxPercentage" placeholder="e.g., 25" value="25">
+                    </div>
+                </div>
+            </div>
+            
+            <button class="cta-button" onclick="calculateHourlyRate()">Calculate My Hourly Rate</button>
+            
+            <div class="results-container" id="results" style="display: none;">
+                <h3 style="color: #ed64a6; margin-top: 0;">Your Detailed Hourly Rate Analysis</h3>
+                
+                <div class="results-grid">
+                    <div class="result-box">
+                        <div class="result-label">Base Hourly Rate</div>
+                        <div class="result-value" id="baseRate">$0</div>
+                        <div class="result-label">Before expenses & profit</div>
+                    </div>
+                    <div class="result-box">
+                        <div class="result-label">Expenses Per Hour</div>
+                        <div class="result-value" id="expensesPerHour">$0</div>
+                        <div class="result-label">Business costs allocation</div>
+                    </div>
+                    <div class="result-box">
+                        <div class="result-label">Profit Per Hour</div>
+                        <div class="result-value" id="profitPerHour">$0</div>
+                        <div class="result-label">For growth & investment</div>
+                    </div>
+                    <div class="result-box">
+                        <div class="result-label">Final Hourly Rate</div>
+                        <div class="result-value" id="finalRate">$0</div>
+                        <div class="result-label">What to charge clients</div>
+                    </div>
+                </div>
+                
+                <div style="margin-top: 30px;">
+                    <h4 style="color: #4a5568;">Annual Breakdown</h4>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-top: 15px;">
+                        <div style="background: white; padding: 15px; border-radius: 6px;">
+                            <div style="font-size: 0.9rem; color: #718096;">Total Billable Hours</div>
+                            <div style="font-size: 1.2rem; font-weight: bold; color: #4a5568;" id="totalHours">0</div>
+                        </div>
+                        <div style="background: white; padding: 15px; border-radius: 6px;">
+                            <div style="font-size: 0.9rem; color: #718096;">Annual Revenue</div>
+                            <div style="font-size: 1.2rem; font-weight: bold; color: #4a5568;" id="annualRevenue">$0</div>
+                        </div>
+                        <div style="background: white; padding: 15px; border-radius: 6px;">
+                            <div style="font-size: 0.9rem; color: #718096;">Total Profit</div>
+                            <div style="font-size: 1.2rem; font-weight: bold; color: #38a169;" id="totalProfit">$0</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="margin-top: 30px; padding: 20px; background: #e6fffa; border-radius: 8px;">
+                    <h4 style="color: #234e52; margin-top: 0;">📊 Rate Comparison by Location</h4>
+                    <p style="margin-bottom: 10px;" id="locationComparison">Loading comparison...</p>
+                    <p>Based on your country selection and experience level, here's how your rate compares to market averages.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2>Understanding the Hourly Rate Formula</h2>
+            <p>Many freelancers use oversimplified formulas like "desired income ÷ hours worked." This misses critical components. Here's the complete formula our calculator uses:</p>
+            
+            <div style="background: #f7fafc; padding: 25px; border-radius: 10px; margin: 25px 0;">
+                <h3 style="color: #2d3748; margin-top: 0;">Complete Hourly Rate Formula</h3>
+                <p><strong>Step 1: Base Rate = Desired Income ÷ Billable Hours</strong><br>
+                This covers your personal salary</p>
+                
+                <p><strong>Step 2: Add Expenses = Annual Expenses ÷ Billable Hours</strong><br>
+                Covers business costs (software, equipment, taxes, etc.)</p>
+                
+                <p><strong>Step 3: Add Profit Margin = (Base + Expenses) × Profit %</strong><br>
+                Funds business growth and investments</p>
+                
+                <p><strong>Step 4: Final Rate = Base + Expenses + Profit</strong><br>
+                What you actually charge clients</p>
+            </div>
+            
+            <h3>Example Calculation</h3>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>Component</th>
+                        <th>Amount</th>
+                        <th>Calculation</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Desired Annual Income</td>
+                        <td>$60,000</td>
+                        <td>Personal salary goal</td>
+                    </tr>
+                    <tr>
+                        <td>Annual Business Expenses</td>
+                        <td>$12,000</td>
+                        <td>Software, equipment, insurance</td>
+                    </tr>
+                    <tr>
+                        <td>Billable Hours/Year</td>
+                        <td>1,440</td>
+                        <td>30 hours/week × 48 weeks</td>
+                    </tr>
+                    <tr>
+                        <td>Base Rate</td>
+                        <td>$41.67</td>
+                        <td>$60,000 ÷ 1,440 hours</td>
+                    </tr>
+                    <tr>
+                        <td>Expenses/Hour</td>
+                        <td>$8.33</td>
+                        <td>$12,000 ÷ 1,440 hours</td>
+                    </tr>
+                    <tr>
+                        <td>Profit Margin (30%)</td>
+                        <td>$15.00</td>
+                        <td>($41.67 + $8.33) × 30%</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Final Hourly Rate</strong></td>
+                        <td><strong>$65.00</strong></td>
+                        <td>$41.67 + $8.33 + $15.00</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div class="tip-box">
+                <p><strong>Key Insight:</strong> Notice how the final rate ($65) is significantly higher than just dividing desired income by hours ($41.67). This difference is why many freelancers struggle financially—they forget expenses and profit margin.</p>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2>Common Hourly Rate Mistakes to Avoid</h2>
+            
+            <div style="background: #fff5f5; padding: 25px; border-radius: 10px; margin: 25px 0;">
+                <h3 style="color: #c53030; margin-top: 0;">🚫 Critical Pricing Errors</h3>
+            </div>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>Mistake</th>
+                        <th>Impact</th>
+                        <th>Correction</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Using 40 billable hours/week</td>
+                        <td>Unrealistic, ignores admin/marketing time</td>
+                        <td>Use 25-35 hours/week max</td>
+                    </tr>
+                    <tr>
+                        <td>Forgetting business expenses</td>
+                        <td>Paying expenses from personal income</td>
+                        <td>List ALL expenses annually</td>
+                    </tr>
+                    <tr>
+                        <td>No profit margin</td>
+                        <td>No funds for growth or emergencies</td>
+                        <td>Add 20-40% profit margin</td>
+                    </tr>
+                    <tr>
+                        <td>Ignoring taxes</td>
+                        <td>Tax bill surprises, financial stress</td>
+                        <td>Include 25-30% for taxes</td>
+                    </tr>
+                    <tr>
+                        <td>Not adjusting for experience</td>
+                        <td>Undervaluing expertise</td>
+                        <td>Increase rates with experience gains</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <h3>The Billable Hour Reality Check</h3>
+            <p>Most freelancers overestimate their billable hours. Here's a realistic breakdown of a 40-hour work week:</p>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin: 20px 0;">
+                <div style="background: #ebf8ff; padding: 15px; border-radius: 8px; text-align: center;">
+                    <div style="font-size: 1.5rem; font-weight: bold; color: #2b6cb0;">15-20</div>
+                    <div style="color: #4a5568;">Client Work</div>
+                </div>
+                <div style="background: #fefcbf; padding: 15px; border-radius: 8px; text-align: center;">
+                    <div style="font-size: 1.5rem; font-weight: bold; color: #b7791f;">5-10</div>
+                    <div style="color: #4a5568;">Marketing/Sales</div>
+                </div>
+                <div style="background: #fed7d7; padding: 15px; border-radius: 8px; text-align: center;">
+                    <div style="font-size: 1.5rem; font-weight: bold; color: #c53030;">5-8</div>
+                    <div style="color: #4a5568;">Administrative</div>
+                </div>
+                <div style="background: #c6f6d5; padding: 15px; border-radius: 8px; text-align: center;">
+                    <div style="font-size: 1.5rem; font-weight: bold; color: #276749;">5-7</div>
+                    <div style="color: #4a5568;">Learning/Development</div>
+                </div>
+            </div>
+            
+            <p>That's why we recommend using <strong>25-30 billable hours per week</strong> in calculations, even if you work 40+ hours total.</p>
+        </div>
+
+        <div class="content-section">
+            <h2>Location-Based Rate Adjustments</h2>
+            <p>Hourly rates vary dramatically by location. Our calculator automatically adjusts for this, but here's what you need to know:</p>
+            
+            <h3>Global Hourly Rate Comparison</h3>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>Country</th>
+                        <th>Web Developer</th>
+                        <th>Graphic Designer</th>
+                        <th>Content Writer</th>
+                        <th>SEO Specialist</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>United States</td>
+                        <td>$75 - $150</td>
+                        <td>$50 - $100</td>
+                        <td>$40 - $80</td>
+                        <td>$60 - $120</td>
+                    </tr>
+                    <tr>
+                        <td>United Kingdom</td>
+                        <td>£60 - £120</td>
+                        <td>£40 - £80</td>
+                        <td>£30 - £60</td>
+                        <td>£50 - £100</td>
+                    </tr>
+                    <tr>
+                        <td>Canada</td>
+                        <td>CAD 70 - CAD 130</td>
+                        <td>CAD 50 - CAD 90</td>
+                        <td>CAD 40 - CAD 70</td>
+                        <td>CAD 60 - CAD 110</td>
+                    </tr>
+                    <tr>
+                        <td>Australia</td>
+                        <td>AUD 80 - AUD 140</td>
+                        <td>AUD 60 - AUD 100</td>
+                        <td>AUD 50 - AUD 80</td>
+                        <td>AUD 70 - AUD 120</td>
+                    </tr>
+                    <tr>
+                        <td>India</td>
+                        <td>₹1,000 - ₹3,000</td>
+                        <td>₹800 - ₹2,000</td>
+                        <td>₹500 - ₹1,500</td>
+                        <td>₹1,000 - ₹2,500</td>
+                    </tr>
+                    <tr>
+                        <td>Pakistan</td>
+                        <td>PKR 2,000 - PKR 6,000</td>
+                        <td>PKR 1,500 - PKR 4,000</td>
+                        <td>PKR 1,000 - PKR 3,000</td>
+                        <td>PKR 2,000 - PKR 5,000</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div class="tip-box">
+                <p><strong>International Client Strategy:</strong> If you live in a lower-cost country but work with international clients, consider charging rates based on client location rather than yours. Many freelancers in India/Pakistan successfully charge US/UK rates to international clients by demonstrating equal quality and value.</p>
+            </div>
+            
+            <h3>Cost of Living Adjustments</h3>
+            <p>When moving or working remotely, adjust rates for cost of living:</p>
+            
+            <div style="background: #f0fff4; padding: 20px; border-radius: 8px; margin: 20px 0;">
+                <p><strong>Example:</strong> A freelancer moving from New York to Lisbon</p>
+                <p>New York rate: $100/hour (cost of living index: 100)</p>
+                <p>Lisbon cost of living index: 45</p>
+                <p><strong>Adjusted rate:</strong> $100 × (45/100) = $45/hour for local clients</p>
+                <p><strong>But for US clients:</strong> Still charge $100/hour</p>
+            </div>
+            
+            <p>For detailed country-specific guidance, see our <a href="global-freelance-rates.html">global freelance rates guide</a>.</p>
+        </div>
+
+        <div class="content-section">
+            <h2>Converting Hourly to Project Rates</h2>
+            <p>Once you have your hourly rate, you need to convert it to project rates. Here's how:</p>
+            
+            <h3>Project Estimation Formula</h3>
+            
+            <div style="background: #faf5ff; padding: 20px; border-radius: 8px; margin: 20px 0;">
+                <p><strong>Step 1: Estimate total hours</strong><br>
+                Research: 5 hours<br>
+                Design: 20 hours<br>
+                Development: 40 hours<br>
+                Testing: 10 hours<br>
+                Revisions: 5 hours<br>
+                <strong>Total: 80 hours</strong></p>
+                
+                <p><strong>Step 2: Multiply by hourly rate</strong><br>
+                80 hours × $65/hour = $5,200</p>
+                
+                <p><strong>Step 3: Add buffer (20-30%)</strong><br>
+                $5,200 × 1.3 = <strong>$6,760 project price</strong></p>
+            </div>
+            
+            <h3>When to Use Different Pricing Methods</h3>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>Project Type</th>
+                        <th>Pricing Method</th>
+                        <th>Why It Works</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Well-defined website</td>
+                        <td>Fixed project price</td>
+                        <td>Clear scope, predictable</td>
+                    </tr>
+                    <tr>
+                        <td>Ongoing maintenance</td>
+                        <td>Monthly retainer</td>
+                        <td>Predictable income, long-term</td>
+                    </tr>
+                    <tr>
+                        <td>Consulting/advice</td>
+                        <td>Hourly rate</td>
+                        <td>Flexible, paid for all time</td>
+                    </tr>
+                    <tr>
+                        <td>High-impact business solution</td>
+                        <td>Value-based pricing</td>
+                        <td>Charge based on results</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <p>Use our <a href="project-rate-calculator.html">project rate calculator</a> for precise project pricing based on your hourly rate.</p>
+        </div>
+
+        <div class="conclusion">
+            <h2>Take Control of Your Freelance Pricing</h2>
+            <p>Calculating your hourly rate is the foundation of freelance success. With the right rate, you can:</p>
+            
+            <div style="max-width: 800px; margin: 30px auto; text-align: left;">
+                <p>✅ <strong>Earn what you're worth:</strong> Not just survive, but thrive</p>
+                <p>✅ <strong>Invest in growth:</strong> Professional development, better equipment</p>
+                <p>✅ <strong>Work with better clients:</strong> Those who value quality over price</p>
+                <p>✅ <strong>Plan for the future:</strong> Savings, retirement, vacations</p>
+                <p>✅ <strong>Avoid burnout:</strong> Work reasonable hours for good pay</p>
+            </div>
+            
+            <p style="margin-top: 30px;">Your hourly rate isn't just a number—it's the key to sustainable freelance success.</p>
+            
+            <button class="cta-button" onclick="scrollToCalculator()" style="width: auto; display: inline-block; padding: 16px 40px; margin-top: 20px;">Calculate Your Rate Now</button>
+            
+            <div style="margin-top: 30px;">
+                <p style="font-size: 0.9rem; color: #718096;">Need help with project pricing? Try our <a href="project-rate-calculator.html">project rate calculator</a> or read our <a href="freelance-pricing-guide.html">complete pricing guide</a>.</p>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2>Frequently Asked Questions</h2>
+            
+            <h3>1. How many billable hours should I realistically expect per week?</h3>
+            <p>For most freelancers, 25-30 billable hours per week is realistic. This accounts for: marketing/sales (5-10 hours), administrative tasks (5-8 hours), professional development (5-7 hours), and breaks/vacation time. If you're consistently hitting 35+ billable hours, you're likely neglecting business growth activities.</p>
+            
+            <h3>2. What expenses should I include in my rate calculation?</h3>
+            <p>Include ALL business expenses: software subscriptions, equipment/computer depreciation, internet/phone, office supplies, professional insurance, accounting/tax services, marketing costs, professional development courses, healthcare (if self-funded), retirement contributions, and estimated taxes (25-30% of income). Our calculator's expense breakdown helps capture these.</p>
+            
+            <h3>3. How much profit margin should I include?</h3>
+            <p>Aim for 20-40% profit margin. Beginners: 20-25% (covers emergencies, slow periods). Experienced: 25-35% (funds growth, equipment upgrades). Experts: 30-40%+ (allows for investments, team hiring). Profit margin = (Revenue - All Expenses) ÷ Revenue × 100. This isn't personal income—it's business profit for growth.</p>
+            
+            <h3>4. Should I charge different hourly rates for different types of work?</h3>
+            <p>Yes, consider tiered rates: 1) Core service rate (your standard rate), 2) Premium/urgent rate (25-50% higher for rush work), 3) Consulting/strategy rate (higher for advisory work), 4) Maintenance/support rate (lower retainer rate for ongoing work). Always communicate rate differences clearly to clients.</p>
+            
+            <h3>5. How do I handle rate increases with existing clients?</h3>
+            <p>Give 60-90 days notice. Explain the increase in terms of added value: "I've completed [certification/training] and improved [specific skills], allowing me to deliver even better results." For long-term clients, offer a smaller increase or grandfather them at current rates for a limited time. Always put rate changes in writing.</p>
+            
+            <h3>6. What if my calculated rate is much higher than market rates?</h3>
+            <p>First, verify your calculations are realistic. If correct, consider: 1) Targeting higher-paying clients/industries, 2) Specializing in a niche with less competition, 3) Improving your portfolio/testimonials to justify higher rates, 4) Offering exceptional value that commands premium pricing, 5) Starting with slightly lower rates and increasing as you prove value.</p>
+            
+            <h3>7. How do I track my actual billable hours accurately?</h3>
+            <p>Use time tracking software like Toggl, Harvest, or Clockify. Track ALL time: client work, communication, research, revisions. Review weekly to understand your actual billable vs non-billable ratio. After 3 months, use this data to adjust your rate calculations. Many freelancers discover they're only 50-60% billable.</p>
+            
+            <h3>8. Can I use this calculator for different currencies?</h3>
+            <p>Yes, our calculator works with any currency. Simply enter amounts in your local currency. The country selection helps with market rate comparisons. For currency conversion for international clients, use current exchange rates and consider currency fluctuation risks in your pricing.</p>
+        </div>
+
+        <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+                {
+                    "@type": "Question",
+                    "name": "How many billable hours should I realistically expect per week?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "For most freelancers, 25-30 billable hours per week is realistic. This accounts for: marketing/sales (5-10 hours), administrative tasks (5-8 hours), professional development (5-7 hours), and breaks/vacation time. If you're consistently hitting 35+ billable hours, you're likely neglecting business growth activities."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "What expenses should I include in my rate calculation?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Include ALL business expenses: software subscriptions, equipment/computer depreciation, internet/phone, office supplies, professional insurance, accounting/tax services, marketing costs, professional development courses, healthcare (if self-funded), retirement contributions, and estimated taxes (25-30% of income). Our calculator's expense breakdown helps capture these."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "How much profit margin should I include?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Aim for 20-40% profit margin. Beginners: 20-25% (covers emergencies, slow periods). Experienced: 25-35% (funds growth, equipment upgrades). Experts: 30-40%+ (allows for investments, team hiring). Profit margin = (Revenue - All Expenses) ÷ Revenue × 100. This isn't personal income—it's business profit for growth."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Should I charge different hourly rates for different types of work?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Yes, consider tiered rates: 1) Core service rate (your standard rate), 2) Premium/urgent rate (25-50% higher for rush work), 3) Consulting/strategy rate (higher for advisory work), 4) Maintenance/support rate (lower retainer rate for ongoing work). Always communicate rate differences clearly to clients."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "How do I handle rate increases with existing clients?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Give 60-90 days notice. Explain the increase in terms of added value: 'I've completed [certification/training] and improved [specific skills], allowing me to deliver even better results.' For long-term clients, offer a smaller increase or grandfather them at current rates for a limited time. Always put rate changes in writing."
+                    }
+                }
+            ]
+        }
+        </script>
+
+        <script>
+            const marketRates = {
+                'USA': { webdev: { min: 75, max: 150 }, design: { min: 50, max: 100 }, writing: { min: 40, max: 80 }, seo: { min: 60, max: 120 } },
+                'UK': { webdev: { min: 60, max: 120 }, design: { min: 40, max: 80 }, writing: { min: 30, max: 60 }, seo: { min: 50, max: 100 } },
+                'Canada': { webdev: { min: 70, max: 130 }, design: { min: 50, max: 90 }, writing: { min: 40, max: 70 }, seo: { min: 60, max: 110 } },
+                'Australia': { webdev: { min: 80, max: 140 }, design: { min: 60, max: 100 }, writing: { min: 50, max: 80 }, seo: { min: 70, max: 120 } },
+                'India': { webdev: { min: 1000, max: 3000 }, design: { min: 800, max: 2000 }, writing: { min: 500, max: 1500 }, seo: { min: 1000, max: 2500 } },
+                'Pakistan': { webdev: { min: 2000, max: 6000 }, design: { min: 1500, max: 4000 }, writing: { min: 1000, max: 3000 }, seo: { min: 2000, max: 5000 } },
+                'Germany': { webdev: { min: 60, max: 130 }, design: { min: 45, max: 90 }, writing: { min: 35, max: 70 }, seo: { min: 55, max: 110 } },
+                'Other': { webdev: { min: 30, max: 100 }, design: { min: 25, max: 75 }, writing: { min: 20, max: 60 }, seo: { min: 30, max: 90 } }
+            };
+
+            function calculateHourlyRate() {
+                const desiredIncome = parseFloat(document.getElementById('desiredIncome').value) || 60000;
+                const workWeeks = parseFloat(document.getElementById('workWeeks').value) || 48;
+                const hoursPerWeek = parseFloat(document.getElementById('hoursPerWeek').value) || 30;
+                const annualExpenses = parseFloat(document.getElementById('annualExpenses').value) || 12000;
+                const profitMargin = parseFloat(document.getElementById('profitMargin').value) || 30;
+                const country = document.getElementById('country').value;
+                
+                const totalBillableHours = workWeeks * hoursPerWeek;
+                
+                const baseRate = desiredIncome / totalBillableHours;
+                const expensesPerHour = annualExpenses / totalBillableHours;
+                const profitPerHour = ((baseRate + expensesPerHour) * profitMargin) / 100;
+                const finalRate = baseRate + expensesPerHour + profitPerHour;
+                
+                const annualRevenue = finalRate * totalBillableHours;
+                const totalProfit = (annualRevenue - desiredIncome - annualExpenses);
+                
+                const currencySymbol = getCurrencySymbol(country);
+                
+                document.getElementById('baseRate').textContent = `${currencySymbol}${baseRate.toFixed(2)}`;
+                document.getElementById('expensesPerHour').textContent = `${currencySymbol}${expensesPerHour.toFixed(2)}`;
+                document.getElementById('profitPerHour').textContent = `${currencySymbol}${profitPerHour.toFixed(2)}`;
+                document.getElementById('finalRate').textContent = `${currencySymbol}${finalRate.toFixed(2)}`;
+                document.getElementById('totalHours').textContent = totalBillableHours.toFixed(0);
+                document.getElementById('annualRevenue').textContent = `${currencySymbol}${annualRevenue.toFixed(0)}`;
+                document.getElementById('totalProfit').textContent = `${currencySymbol}${totalProfit.toFixed(0)}`;
+                
+                const marketRate = marketRates[country];
+                const comparisonText = `Market rates in ${country} for web development: ${currencySymbol}${marketRate.webdev.min}-${marketRate.webdev.max}/hour. Your calculated rate (${currencySymbol}${finalRate.toFixed(2)}) is ${finalRate < marketRate.webdev.min ? 'below' : finalRate > marketRate.webdev.max ? 'above' : 'within'} this range.`;
+                document.getElementById('locationComparison').textContent = comparisonText;
+                
+                document.getElementById('results').style.display = 'block';
+                document.getElementById('results').scrollIntoView({ behavior: 'smooth' });
+            }
+
+            function getCurrencySymbol(country) {
+                const symbols = {
+                    'USA': '$',
+                    'UK': '£',
+                    'Canada': 'CAD ',
+                    'Australia': 'AUD ',
+                    'Germany': '€',
+                    'India': '₹',
+                    'Pakistan': 'PKR ',
+                    'Other': '$'
+                };
+                return symbols[country] || '$';
+            }
+
+            function scrollToCalculator() {
+                document.querySelector('.calculator-container').scrollIntoView({ behavior: 'smooth' });
+            }
+        </script>
+
+        <footer>
+            <div class="nav-links">
+                <a href="index.html">Main Calculator</a>
+                <a href="freelance-pricing-guide.html">Pricing Guide</a>
+                <a href="hourly-rate-calculator.html">Hourly Calculator</a>
+                <a href="project-rate-calculator.html">Project Calculator</a>
+                <a href="freelance-contracts.html">Freelance Contracts</a>
+                <a href="global-freelance-rates.html">Global Rates</a>
+            </div>
+            <p style="margin-top: 30px;">© 2023 Freelance Rate Calculator. Accurate hourly rate calculations for freelancers worldwide.</p>
+            <p>Calculate your perfect rate with our <a href="index.html">free calculator</a>.</p>
+        </footer>
+    </div>
+</body>
+</html>
