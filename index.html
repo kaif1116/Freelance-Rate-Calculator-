@@ -137,7 +137,7 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            background-color: var(--primary-color);
+            background: linear-gradient(135deg, #6C63FF 0%, #4f46e5 100%);
             color: white;
             font-weight: 500;
             padding: 0.75rem 1.5rem;
@@ -151,7 +151,7 @@
         }
         
         .btn:hover {
-            background-color: var(--primary-dark);
+            background: linear-gradient(135deg, #4f46e5 0%, #4338ca 100%);
             transform: translateY(-2px);
             box-shadow: var(--shadow-lg);
         }
@@ -814,11 +814,11 @@
             max-width: 100%;
         }
         
-        /* ===== FOOTER ===== */
+        /* ===== FOOTER FIXED STYLES ===== */
         footer {
-            background-color: var(--bg-secondary);
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
             padding: clamp(2rem, 4vw, 3rem) 0;
-            border-top: 1px solid var(--border-color);
+            border-top: 1px solid #334155;
             margin-top: auto;
         }
         
@@ -829,19 +829,24 @@
         }
         
         .footer-content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            gap: 2rem;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2.5rem;
+            margin-bottom: 2rem;
         }
         
-        @media (min-width: 768px) {
+        @media (max-width: 1024px) {
             .footer-content {
-                flex-direction: row;
-                justify-content: space-between;
-                align-items: flex-start;
-                text-align: left;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+            }
+        }
+        
+        @media (max-width: 640px) {
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                text-align: center;
             }
         }
         
@@ -849,36 +854,128 @@
             font-family: 'Poppins', sans-serif;
             font-size: 1.5rem;
             font-weight: 700;
-            color: var(--primary-color);
+            color: #8b5cf6;
             margin-bottom: 1rem;
             display: flex;
             align-items: center;
             gap: 0.5rem;
         }
         
-        .footer-links {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            min-width: 150px;
+        @media (max-width: 640px) {
+            .footer-logo {
+                justify-content: center;
+            }
         }
         
-        .footer-links a {
-            color: var(--text-secondary);
-            transition: var(--transition);
+        .footer-content > div:first-child p {
+            color: #cbd5e1;
+            max-width: 300px;
+            line-height: 1.6;
         }
         
-        .footer-links a:hover {
-            color: var(--primary-color);
+        .footer-links h3,
+        .footer-guides h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 1.25rem;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .footer-links a,
+        .footer-guides a {
+            display: block;
+            color: #cbd5e1;
+            margin-bottom: 0.75rem;
+            transition: color 0.3s ease;
+            font-size: 0.95rem;
+        }
+        
+        .footer-links a:hover,
+        .footer-guides a:hover {
+            color: #8b5cf6;
+        }
+        
+        .footer-links span {
+            display: block;
+            color: #94a3b8;
+            margin-bottom: 0.75rem;
+            font-size: 0.95rem;
+        }
+        
+        .footer-guides ul {
+            list-style: none;
+            padding-left: 0;
+            margin: 0;
+        }
+        
+        .footer-guides li {
+            margin-bottom: 0.75rem;
         }
         
         .footer-bottom {
-            margin-top: 2rem;
+            margin-top: 3rem;
             padding-top: 2rem;
-            border-top: 1px solid var(--border-color);
+            border-top: 1px solid #334155;
             text-align: center;
-            color: var(--text-secondary);
+            color: #94a3b8;
             font-size: 0.875rem;
+            line-height: 1.5;
+        }
+        
+        .footer-bottom p {
+            color: #94a3b8;
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-bottom a {
+            color: #8b5cf6;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-bottom a:hover {
+            color: #a78bfa;
+            text-decoration: underline;
+        }
+        
+        /* Fix for button color consistency */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #6C63FF 0%, #4f46e5 100%);
+            color: white;
+            font-weight: 500;
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--radius);
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: clamp(0.875rem, 0.85rem + 0.13vw, 0.9375rem);
+            gap: 0.5rem;
+            white-space: nowrap;
+        }
+        
+        .btn:hover {
+            background: linear-gradient(135deg, #4f46e5 0%, #4338ca 100%);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        /* Ensure no overflow on mobile */
+        @media (max-width: 640px) {
+            body {
+                overflow-x: hidden;
+            }
+            
+            .footer-container {
+                padding: 0 1rem;
+            }
+            
+            .footer-content > div {
+                width: 100%;
+            }
         }
         
         /* ===== RESPONSIVE UTILITIES ===== */
@@ -904,16 +1001,6 @@
             .container, .nav-container, .footer-container {
                 padding-left: 1rem;
                 padding-right: 1rem;
-            }
-            
-            .footer-content {
-                flex-direction: column;
-                text-align: center;
-                gap: 2rem;
-            }
-            
-            .footer-links {
-                align-items: center;
             }
         }
         
@@ -1603,11 +1690,11 @@
                         <i class="fas fa-calculator"></i>
                         RateCalc Pro
                     </div>
-                    <p style="max-width: 300px;">Professional freelance rate calculator for USA, UK, India, Pakistan, Canada, Australia.</p>
+                    <p>Professional freelance rate calculator for USA, UK, India, Pakistan, Canada, Australia.</p>
                 </div>
                         
                 <div class="footer-links">
-                    <h3 style="font-size: 1rem; margin-bottom: 1rem;">Quick Links</h3>
+                    <h3>Quick Links</h3>
                     <a href="#home" onclick="showPage('home')">Home</a>
                     <a href="#calculator" onclick="showPage('calculator')">Calculator</a>
                     <a href="#about" onclick="showPage('about')">About</a>
@@ -1616,30 +1703,31 @@
                     <a href="#disclaimer" onclick="showPage('disclaimer')">Disclaimer</a>
                 </div>
             
-          <div class="footer-guides">
-              <ul>
-                  <li><a href="website-speed-guide.html">Website Speed Guide</a></li>
-                  <li><a href="hosting-affects-website-speed.html">Hosting Affects Website Speed</a></li>
-                  <li><a href="page-speed-and-seo.html">Page Speed & SEO</a></li>
-                  <li><a href="core-web-vitals.html">Core Web Vitals</a></li>
-                  <li><a href="cheap-fast-hosting.html">Cheap & Fast Hosting</a></li>
-             </ul>
-        </div>
+                <div class="footer-guides">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="website-speed-guide.html">Website Speed Guide</a></li>
+                        <li><a href="hosting-affects-website-speed.html">Hosting Affects Website Speed</a></li>
+                        <li><a href="page-speed-and-seo.html">Page Speed & SEO</a></li>
+                        <li><a href="core-web-vitals.html">Core Web Vitals</a></li>
+                        <li><a href="cheap-fast-hosting.html">Cheap & Fast Hosting</a></li>
+                    </ul>
+                </div>
                     
-               <div class="footer-links">
-                    <h3 style="font-size: 1rem; margin-bottom: 1rem;">Countries</h3>
-                    <span style="color: var(--text-secondary);">USA</span>
-                    <span style="color: var(--text-secondary);">UK</span>
-                    <span style="color: var(--text-secondary);">India</span>
-                    <span style="color: var(--text-secondary);">Pakistan</span>
-                    <span style="color: var(--text-secondary);">Canada</span>
-                    <span style="color: var(--text-secondary);">Australia</span>
+                <div class="footer-links">
+                    <h3>Countries</h3>
+                    <span>USA</span>
+                    <span>UK</span>
+                    <span>India</span>
+                    <span>Pakistan</span>
+                    <span>Canada</span>
+                    <span>Australia</span>
                 </div>
             </div>
             
             <div class="footer-bottom">
                 <p>&copy; 2023 RateCalc Pro. All rights reserved.</p>
-                <p>This site uses cookies and displays advertisements. By using our site, you agree to our <a href="#privacy" onclick="showPage('privacy')" style="color: var(--primary-color);">Privacy Policy</a> and <a href="#terms" onclick="showPage('terms')" style="color: var(--primary-color);">Terms</a>.</p>
+                <p>This site uses cookies and displays advertisements. By using our site, you agree to our <a href="#privacy" onclick="showPage('privacy')">Privacy Policy</a> and <a href="#terms" onclick="showPage('terms')">Terms</a>.</p>
             </div>
         </div>
     </footer>
