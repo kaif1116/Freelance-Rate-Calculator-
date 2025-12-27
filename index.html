@@ -1044,6 +1044,192 @@
                 margin-right: auto;
             }
         }
+
+        /* ===== NEW SECTIONS STYLES ===== */
+        /* Hostinger Affiliate Section */
+        .hostinger-section {
+            padding: clamp(3rem, 5vw, 4rem) 0;
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+        }
+        
+        .dark-mode .hostinger-section {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+        }
+        
+        .hostinger-card {
+            background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-secondary) 100%);
+            border-radius: var(--radius-lg);
+            padding: clamp(2rem, 4vw, 3rem);
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--border-color);
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .hostinger-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+        
+        .hostinger-header h2 {
+            color: #673de6;
+            margin-bottom: 0.75rem;
+        }
+        
+        .dark-mode .hostinger-header h2 {
+            color: #8b5cf6;
+        }
+        
+        .hostinger-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2.5rem;
+        }
+        
+        .feature-card {
+            background: var(--bg-primary);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            text-align: center;
+            border: 1px solid var(--border-color);
+            transition: var(--transition);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+            border-color: #673de6;
+        }
+        
+        .dark-mode .feature-card:hover {
+            border-color: #8b5cf6;
+        }
+        
+        .feature-icon {
+            font-size: 2rem;
+            color: #673de6;
+            margin-bottom: 1rem;
+        }
+        
+        .dark-mode .feature-icon {
+            color: #8b5cf6;
+        }
+        
+        .feature-card h4 {
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+        
+        .hostinger-cta {
+            text-align: center;
+            margin-top: 2rem;
+        }
+        
+        .hostinger-btn {
+            background: linear-gradient(135deg, #673de6 0%, #5025d1 100%);
+            font-size: 1.1rem;
+            padding: 1rem 2rem;
+        }
+        
+        .hostinger-btn:hover {
+            background: linear-gradient(135deg, #5025d1 0%, #3a1ca3 100%);
+        }
+        
+        .affiliate-disclaimer {
+            text-align: center;
+            margin-top: 1.5rem;
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+        
+        /* Other Tools Section */
+        .tools-section {
+            padding: clamp(3rem, 5vw, 4rem) 0;
+            background-color: var(--bg-primary);
+        }
+        
+        .tools-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .tool-card {
+            background: var(--bg-card);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            border: 1px solid var(--border-color);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary-color);
+        }
+        
+        .tool-icon {
+            font-size: 1.75rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .tool-card h3 {
+            margin-bottom: 0.75rem;
+            color: var(--text-primary);
+        }
+        
+        .tool-description {
+            flex-grow: 1;
+            margin-bottom: 1.5rem;
+            color: var(--text-secondary);
+            font-size: 0.9375rem;
+            line-height: 1.5;
+        }
+        
+        .tool-btn {
+            width: 100%;
+            justify-content: center;
+        }
+        
+        @media (max-width: 768px) {
+            .hostinger-features {
+                grid-template-columns: 1fr;
+            }
+            
+            .tools-grid {
+                grid-template-columns: 1fr;
+                max-width: 400px;
+            }
+            
+            .hostinger-card {
+                padding: 1.5rem;
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .tools-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        
+        @media (min-width: 1200px) {
+            .tools-grid {
+                grid-template-columns: repeat(5, 1fr);
+            }
+        }
     </style>
 </head>
 <body>
@@ -1464,6 +1650,196 @@
                         <p>Advertisement</p>
                         <p>Ad space (728x90)</p>
                     </div>
+
+                    <!-- START Hostinger Affiliate Section -->
+                    <div class="hostinger-section">
+                        <div class="container">
+                            <div class="hostinger-card">
+                                <div class="hostinger-header">
+                                    <h2>Turn Your Rates Into Real Income</h2>
+                                    <p>After calculating your ideal freelance rates, the next step is building a professional online presence. Quality hosting ensures your website loads quickly, builds client trust, and scales with your growing business.</p>
+                                </div>
+                                
+                                <div class="hostinger-features">
+                                    <div class="feature-card">
+                                        <div class="feature-icon">
+                                            <i class="fas fa-bolt"></i>
+                                        </div>
+                                        <h4>Fast LiteSpeed Servers</h4>
+                                        <p>Optimized for speed and performance</p>
+                                    </div>
+                                    
+                                    <div class="feature-card">
+                                        <div class="feature-icon">
+                                            <i class="fas fa-globe"></i>
+                                        </div>
+                                        <h4>Free CDN Included</h4>
+                                        <p>Global content delivery network</p>
+                                    </div>
+                                    
+                                    <div class="feature-card">
+                                        <div class="feature-icon">
+                                            <i class="fas fa-hdd"></i>
+                                        </div>
+                                        <h4>SSD Storage</h4>
+                                        <p>Faster data access and reliability</p>
+                                    </div>
+                                    
+                                    <div class="feature-card">
+                                        <div class="feature-icon">
+                                            <i class="fas fa-desktop"></i>
+                                        </div>
+                                        <h4>Beginner-Friendly Dashboard</h4>
+                                        <p>Easy website management</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="hostinger-cta">
+                                    <a href="https://www.hostinger.com" target="_blank" class="btn hostinger-btn">
+                                        <i class="fas fa-external-link-alt"></i>
+                                        Explore Hostinger Plans
+                                    </a>
+                                    <p class="affiliate-disclaimer">
+                                        Transparency: We may earn a commission at no extra cost to you. This helps support our free tools.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- END Hostinger Affiliate Section -->
+
+                    <!-- START Other Free Tools Section -->
+                    <div class="tools-section">
+                        <div class="container">
+                            <div class="tools-header">
+                                <h2>Other Free Tools You Might Like</h2>
+                                <p>Helpful tools for freelancers, bloggers, and small businesses</p>
+                            </div>
+                            
+                            <div class="tools-grid">
+                                <!-- Tool 1 -->
+                                <div class="tool-card">
+                                    <div class="tool-icon">
+                                        <i class="fas fa-calculator"></i>
+                                    </div>
+                                    <h3>Freelance Rate Calculator</h3>
+                                    <p class="tool-description">Calculate optimal pricing for your freelance services</p>
+                                    <a href="#calculator" onclick="showPage('calculator')" class="btn tool-btn">
+                                        Try Tool
+                                    </a>
+                                </div>
+                                
+                                <!-- Tool 2 -->
+                                <div class="tool-card">
+                                    <div class="tool-icon">
+                                        <i class="fas fa-tachometer-alt"></i>
+                                    </div>
+                                    <h3>Website Speed Test</h3>
+                                    <p class="tool-description">Test your website loading speed and performance</p>
+                                    <a href="#" class="btn tool-btn">
+                                        Try Tool
+                                    </a>
+                                </div>
+                                
+                                <!-- Tool 3 -->
+                                <div class="tool-card">
+                                    <div class="tool-icon">
+                                        <i class="fas fa-search"></i>
+                                    </div>
+                                    <h3>SEO Analyzer</h3>
+                                    <p class="tool-description">Analyze website SEO and get improvement suggestions</p>
+                                    <a href="#" class="btn tool-btn">
+                                        Try Tool
+                                    </a>
+                                </div>
+                                
+                                <!-- Tool 4 -->
+                                <div class="tool-card">
+                                    <div class="tool-icon">
+                                        <i class="fas fa-key"></i>
+                                    </div>
+                                    <h3>Keyword Research Tool</h3>
+                                    <p class="tool-description">Find profitable keywords for your content strategy</p>
+                                    <a href="#" class="btn tool-btn">
+                                        Try Tool
+                                    </a>
+                                </div>
+                                
+                                <!-- Tool 5 -->
+                                <div class="tool-card">
+                                    <div class="tool-icon">
+                                        <i class="fas fa-calendar-alt"></i>
+                                    </div>
+                                    <h3>Content Planner</h3>
+                                    <p class="tool-description">Plan and organize your content calendar</p>
+                                    <a href="#" class="btn tool-btn">
+                                        Try Tool
+                                    </a>
+                                </div>
+                                
+                                <!-- Tool 6 -->
+                                <div class="tool-card">
+                                    <div class="tool-icon">
+                                        <i class="fas fa-lightbulb"></i>
+                                    </div>
+                                    <h3>Name Generator</h3>
+                                    <p class="tool-description">Generate creative names for businesses and projects</p>
+                                    <a href="#" class="btn tool-btn">
+                                        Try Tool
+                                    </a>
+                                </div>
+                                
+                                <!-- Tool 7 -->
+                                <div class="tool-card">
+                                    <div class="tool-icon">
+                                        <i class="fas fa-clipboard-check"></i>
+                                    </div>
+                                    <h3>Website Launch Checklist</h3>
+                                    <p class="tool-description">Ensure nothing is missed before going live</p>
+                                    <a href="#" class="btn tool-btn">
+                                        Try Tool
+                                    </a>
+                                </div>
+                                
+                                <!-- Tool 8 -->
+                                <div class="tool-card">
+                                    <div class="tool-icon">
+                                        <i class="fas fa-heartbeat"></i>
+                                    </div>
+                                    <h3>Website Health Check</h3>
+                                    <p class="tool-description">Diagnose and fix common website issues</p>
+                                    <a href="#" class="btn tool-btn">
+                                        Try Tool
+                                    </a>
+                                </div>
+                                
+                                <!-- Tool 9 -->
+                                <div class="tool-card">
+                                    <div class="tool-icon">
+                                        <i class="fas fa-chart-line"></i>
+                                    </div>
+                                    <h3>ROI Calculator</h3>
+                                    <p class="tool-description">Calculate return on investment for marketing campaigns</p>
+                                    <a href="#" class="btn tool-btn">
+                                        Try Tool
+                                    </a>
+                                </div>
+                                
+                                <!-- Tool 10 -->
+                                <div class="tool-card">
+                                    <div class="tool-icon">
+                                        <i class="fas fa-globe-americas"></i>
+                                    </div>
+                                    <h3>Domain Availability Checker</h3>
+                                    <p class="tool-description">Check available domain names instantly</p>
+                                    <a href="#" class="btn tool-btn">
+                                        Try Tool
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- END Other Free Tools Section -->
                 </div>
             </div>
         </section>
